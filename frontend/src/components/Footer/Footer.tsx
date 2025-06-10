@@ -17,7 +17,6 @@ const Footer = () => {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
           <Link to="/connect" style={{ color: '#ccc', textDecoration: 'none' }}>Connect with us</Link>
           
-          <a href="/about-us/details#locations" style={{ color: '#ccc', textDecoration: 'none' }}>Our Ethics and Locations</a>
 
           <Link to="/my-arinsa" style={{ color: '#ccc', textDecoration: 'none' }}>My ARINSA</Link>
           {/* <Link to="/site-map" style={{ color: '#ccc', textDecoration: 'none' }}>Site map</Link> */}
