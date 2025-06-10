@@ -163,18 +163,11 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage closeDropdown={() => {}} />} />
-          <Route path="/courses/comparative-exam-preparation" element={<ComparativeExamPreparation closeDropdown={function (): void {
-            throw new Error('Function not implemented.');
-          } } />} />
-          <Route path="/courses/interview-preparation" element={<InterviewPreparationCourse closeDropdown={function (): void {
-            throw new Error('Function not implemented.');
-          } } />} />
-          <Route path="/courses/normal-course" element={<NormalCertificationCourses closeDropdown={function (): void {
-            throw new Error('Function not implemented.');
-          } } />} />
-          <Route path="/courses/special-course" element={<SpecialCourses closeDropdown={function (): void {
-            throw new Error('Function not implemented.');
-          } } />} />
+          <Route path="/courses/comparative-exam-preparation" element={<ComparativeExamPreparation />} />
+          <Route path="/courses/interview-preparation" element={<InterviewPreparationCourse />} />
+          <Route path="/courses/normal-course" element={<NormalCertificationCourses />} />
+          <Route path="/courses/special-course" element={<SpecialCourses />} />
+
           <Route path="/courses/explore" element={<ExploreCourses />} />
 
          
