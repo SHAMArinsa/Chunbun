@@ -17,19 +17,6 @@ const CareerAll: React.FC = () => {
       }
     }, [hash]);
 
-  const readMoreStyle: React.CSSProperties = {
-    marginTop: '20px',
-    alignSelf: 'flex-start',
-    backgroundColor: '#fff',
-    color: '#000',
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    textDecoration: 'none',
-  };
-
   return (
     <div style={{ color: '#000' }}>
       {/* Background Image Banner */}
