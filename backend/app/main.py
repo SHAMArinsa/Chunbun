@@ -10,8 +10,7 @@ app = FastAPI(title="Arinsa AI Minds Enquiry API")
 origins = [
     "https://www.arinsaaiminds.com",
     "https://arinsaaiminds.com",
-    "http://localhost:5173",  # for local React dev
-    "http://localhost:3000"
+    "https://arinsa-frontend.onrender.com"
 ]
 
 app.add_middleware(
@@ -21,11 +20,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-origins = [
-    "https://your-frontend-name.onrender.com",
-    "https://www.arinsaaiminds.com",
-    "http://localhost:5173"
-]
+
 
 # Include your enquiry router
 app.include_router(enquiries.router, prefix="/api/v1/enquiries", tags=["Enquiries"])
