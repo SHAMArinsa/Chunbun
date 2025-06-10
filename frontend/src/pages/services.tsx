@@ -5,7 +5,7 @@ const Services = () => {
   return (
     <>
 
-      <ServicesPage />
+      <ServicesPage closeDropdown={() => {}} />
 
     </>
   );
