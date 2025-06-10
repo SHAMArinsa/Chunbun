@@ -21,6 +21,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+origins = [
+    "https://your-frontend-name.onrender.com",
+    "https://www.arinsaaiminds.com",
+    "http://localhost:5173"
+]
 
 # Include your enquiry router
 app.include_router(enquiries.router, prefix="/api/v1/enquiries", tags=["Enquiries"])
