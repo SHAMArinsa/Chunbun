@@ -1,5 +1,5 @@
 // frontend/src/components/Insights/spotlight/CaseStudies.tsx
-import React from 'react';
+//import React from 'react';
 
 const CaseStudies = () => {
   return (
