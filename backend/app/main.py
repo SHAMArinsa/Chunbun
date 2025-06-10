@@ -10,7 +10,7 @@ app = FastAPI(title="Arinsa AI Minds Enquiry API")
 origins = [
     "https://www.arinsaaiminds.com",
     "https://arinsaaiminds.com",
-    "https://arinsa-frontend.onrender.com"
+    "https://website-gilt-three-95.vercel.app/"
 ]
 
 app.add_middleware(
