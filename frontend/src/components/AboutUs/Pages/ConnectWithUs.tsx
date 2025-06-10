@@ -80,7 +80,7 @@ const ConnectWithUs: React.FC = () => {
     const fullPhone = `${isdCode}${formData.phoneNumber}`;
 
     try {
-      const response = await fetch(`https://arinsa-api.onrender.com/api/v1/enquiries/`, {
+      const response = await fetch(`https://arinsa-backend.onrender.com/api/v1/enquiries/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
