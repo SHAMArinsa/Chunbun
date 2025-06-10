@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
