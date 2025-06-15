@@ -112,7 +112,7 @@ const ServicesAll: React.FC = () => {
             View Services
           </h1>
           <button
-            onClick={() => window.location.href = "/connect"}
+            onClick={() => window.location.href = '/connect'}
             style={{
               padding: '10px 20px',
               fontSize: '1rem',
