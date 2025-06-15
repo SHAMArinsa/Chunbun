@@ -1,5 +1,3 @@
-// frontend\src\components\AboutUs\Pages\case_study_all.tsx
-
 import React, { useEffect, useState } from 'react';
 
 const caseStudies = [
@@ -85,13 +83,10 @@ const CaseStudyAll: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
-    window.scrollTo(0, 0);
 
+    window.scrollTo(0, 0);
     const scrollToHash = () => {
       const hash = window.location.hash;
       if (hash) {
@@ -106,14 +101,13 @@ const CaseStudyAll: React.FC = () => {
     window.addEventListener('hashchange', scrollToHash);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener('hashchange', scrollToHash);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
     <div>
-      {/* Banner */}
       <div
         style={{
           backgroundImage: 'url("/image/casestudy.jpg")',
@@ -139,7 +133,6 @@ const CaseStudyAll: React.FC = () => {
         </h1>
       </div>
 
-      {/* Case Studies */}
       {caseStudies.map((caseStudy) => (
         <section
           key={caseStudy.id}
@@ -148,7 +141,8 @@ const CaseStudyAll: React.FC = () => {
             padding: isMobile ? '40px 20px' : '60px 40px',
             backgroundColor: '#2c2c2c',
             color: '#fff',
-            margin: '20px 0',
+            marginTop: '20px',
+            marginBottom: '20px',
             fontSize: isMobile ? '1.8rem' : '2.5rem',
           }}
         >
@@ -158,13 +152,19 @@ const CaseStudyAll: React.FC = () => {
             style={{
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
-              alignItems: 'flex-start',
+              alignItems: isMobile ? 'center' : 'flex-start',
               gap: '40px',
               flexWrap: 'wrap',
             }}
           >
-            {/* Images */}
-            <div style={{ flex: '1 1 40%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div
+              style={{
+                flex: isMobile ? '1 1 100%' : '1 1 40%',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '20px',
+              }}
+            >
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
@@ -176,9 +176,7 @@ const CaseStudyAll: React.FC = () => {
                 style={{ width: '100%', borderRadius: '8px' }}
               />
             </div>
-
-            {/* Text */}
-            <div style={{ flex: '1 1 50%' }}>
+            <div style={{ flex: isMobile ? '1 1 100%' : '1 1 50%' }}>
               <p style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', lineHeight: '1.6' }}>
                 <strong>Overview: </strong>{caseStudy.overview}
                 <br /><br />
