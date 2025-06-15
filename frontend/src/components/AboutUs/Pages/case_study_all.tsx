@@ -85,12 +85,12 @@ const CaseStudyAll: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
+
     window.addEventListener('resize', handleResize);
+    window.scrollTo(0, 0);
 
     const scrollToHash = () => {
       const hash = window.location.hash;
@@ -139,7 +139,7 @@ const CaseStudyAll: React.FC = () => {
         </h1>
       </div>
 
-      {/* Loop through case studies */}
+      {/* Case Studies */}
       {caseStudies.map((caseStudy) => (
         <section
           key={caseStudy.id}
@@ -148,25 +148,23 @@ const CaseStudyAll: React.FC = () => {
             padding: isMobile ? '40px 20px' : '60px 40px',
             backgroundColor: '#2c2c2c',
             color: '#fff',
-            marginTop: '20px',
-            marginBottom: '20px',
+            margin: '20px 0',
             fontSize: isMobile ? '1.8rem' : '2.5rem',
           }}
         >
-          <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: isMobile ? '1.8rem' : '2.5rem' }}>
-            {caseStudy.title}
-          </h2>
+          <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>{caseStudy.title}</h2>
 
           <div
             style={{
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
-              alignItems: isMobile ? 'center' : 'flex-start',
+              alignItems: 'flex-start',
               gap: '40px',
               flexWrap: 'wrap',
             }}
           >
-            <div style={{ flex: '1 1 100%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Images */}
+            <div style={{ flex: '1 1 40%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
@@ -178,8 +176,10 @@ const CaseStudyAll: React.FC = () => {
                 style={{ width: '100%', borderRadius: '8px' }}
               />
             </div>
-            <div style={{ flex: '1 1 100%' }}>
-              <p style={{ fontSize: isMobile ? '1rem' : '1.5rem', lineHeight: '1.6' }}>
+
+            {/* Text */}
+            <div style={{ flex: '1 1 50%' }}>
+              <p style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', lineHeight: '1.6' }}>
                 <strong>Overview: </strong>{caseStudy.overview}
                 <br /><br />
                 <strong>Challenges: </strong>{caseStudy.challenges}
