@@ -364,19 +364,19 @@ const HomePageContent: React.FC = () => {
         >
           {[
             {
-              img: 'public/image/pic1.jpg',
+              img: 'image/pic1.jpg',
               title: 'Generative AI Solutions',
               desc: 'Custom models, image & text generation, and AI creativity tools.',
               id: 'generative-ai',
             },
             {
-              img: 'public/image/pic2.jpg',
+              img: 'image/pic2.jpg',
               title: 'AI Agents for Business',
               desc: 'Virtual assistants, support bots & process automation.',
               id: 'ai-agent',
             },
             {
-              img: 'public/image/pic3.jpg',
+              img: 'image/pic3.jpg',
               title: 'AI Automation',
               desc: 'Smart automation using ML, NLP, and Computer Vision.',
               id: 'ai-automation',
@@ -416,7 +416,7 @@ const HomePageContent: React.FC = () => {
       {/* Case Studies Background Banner */}
       <div
         style={{
-          backgroundImage: 'url("public/image/case_studies.jpg")',
+          backgroundImage: 'url("/image/case_studies.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: isMobile ? '400px' : '100vh',
