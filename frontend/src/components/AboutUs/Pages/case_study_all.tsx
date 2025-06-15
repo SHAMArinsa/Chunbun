@@ -1,6 +1,6 @@
 // frontend\src\components\AboutUs\Pages\case_study_all.tsx
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const caseStudies = [
   {
@@ -27,7 +27,6 @@ const caseStudies = [
     title: "AI Agents for Business Operations",
     image: "/image/casestudy_aiagent.jpg",
     image2: "/image/casestudy_aiagent2.jpg",
-
     overview:
       "A mid-sized logistics firm needed to streamline customer support and internal workflows. Manual tracking and delayed responses hurt client satisfaction and escalated operational costs.",
     challenges:
@@ -66,7 +65,6 @@ const caseStudies = [
     title: "Healthcare AI Transformation",
     image: "/image/casestudy_health.jpg",
     image2: "/image/casestudy_health2.jpg",
-
     overview:
       "We collaborated with a multi-city hospital network aiming to improve diagnostic turnaround times and triage prioritization using AI. Overloaded radiologists and long patient queues affected outcomes.",
     challenges:
@@ -84,51 +82,54 @@ const caseStudies = [
 ];
 
 const CaseStudyAll: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
 
     const scrollToHash = () => {
       const hash = window.location.hash;
       if (hash) {
         const element = document.querySelector(hash);
         if (element) {
-          // Smooth scroll to the element, offset if needed
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
     };
 
-    // Scroll on initial load
     scrollToHash();
-
-    // Scroll when hash changes (e.g., user clicks a hash link)
     window.addEventListener('hashchange', scrollToHash);
 
-    // Cleanup listener on unmount
     return () => {
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('hashchange', scrollToHash);
     };
   }, []);
 
   return (
     <div>
-      {/* Background Image Banner with Left-Aligned Heading */}
+      {/* Banner */}
       <div
         style={{
           backgroundImage: 'url("/image/casestudy.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: '600px', // Adjust the height as needed
+          height: isMobile ? '300px' : '600px',
           display: 'flex',
-          alignItems: 'center', // Vertically center
-          justifyContent: 'flex-start', // Align content to the left
-          textAlign: 'left', // Left-align the text
-          padding: '0 40px', // Optional left padding to give space from the edge
+          alignItems: 'center',
+          justifyContent: isMobile ? 'center' : 'flex-start',
+          textAlign: isMobile ? 'center' : 'left',
+          padding: isMobile ? '0 20px' : '0 40px',
         }}
       >
         <h1
           style={{
-            fontSize: '3rem', // Adjust the size as needed
+            fontSize: isMobile ? '2rem' : '3rem',
             color: '#fff',
             margin: 0,
             fontWeight: 'bold',
@@ -138,24 +139,34 @@ const CaseStudyAll: React.FC = () => {
         </h1>
       </div>
 
-      {/* Loop through each case study */}
+      {/* Loop through case studies */}
       {caseStudies.map((caseStudy) => (
         <section
           key={caseStudy.id}
           id={caseStudy.id}
           style={{
-            padding: '60px 40px',
+            padding: isMobile ? '40px 20px' : '60px 40px',
             backgroundColor: '#2c2c2c',
             color: '#fff',
             marginTop: '20px',
             marginBottom: '20px',
-            fontSize: '2.5rem',
+            fontSize: isMobile ? '1.8rem' : '2.5rem',
           }}
         >
-          <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>{caseStudy.title}</h2>
+          <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: isMobile ? '1.8rem' : '2.5rem' }}>
+            {caseStudy.title}
+          </h2>
 
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
-            <div style={{ flex: '1 1 40%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: isMobile ? 'center' : 'flex-start',
+              gap: '40px',
+              flexWrap: 'wrap',
+            }}
+          >
+            <div style={{ flex: '1 1 100%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
@@ -167,20 +178,16 @@ const CaseStudyAll: React.FC = () => {
                 style={{ width: '100%', borderRadius: '8px' }}
               />
             </div>
-            <div style={{ flex: '1 1 50%' }}>
-              <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}>
+            <div style={{ flex: '1 1 100%' }}>
+              <p style={{ fontSize: isMobile ? '1rem' : '1.5rem', lineHeight: '1.6' }}>
                 <strong>Overview: </strong>{caseStudy.overview}
-                <br />
-                <br />
+                <br /><br />
                 <strong>Challenges: </strong>{caseStudy.challenges}
-                <br />
-                <br />
+                <br /><br />
                 <strong>Solution: </strong>{caseStudy.solution}
-                <br />
-                <br />
+                <br /><br />
                 <strong>Results: </strong>{caseStudy.results}
-                <br />
-                <br />
+                <br /><br />
                 <strong>Testimonial: </strong>{caseStudy.testimonial}
               </p>
             </div>
