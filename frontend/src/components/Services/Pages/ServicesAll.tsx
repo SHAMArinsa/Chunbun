@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'; // ✅ Import useNavigate
 
 const ServicesAll: React.FC = () => {
   const { hash } = useLocation();
+  const navigate = useNavigate(); // ✅ Initialize navigate
 
   useEffect(() => {
     if (hash) {
@@ -112,13 +113,13 @@ const ServicesAll: React.FC = () => {
             View Services
           </h1>
           <button
-            onClick={() => window.location.href = '/connect'}
+            onClick={() => navigate('/connect')} // ✅ Fixed navigation
             style={{
               padding: '10px 20px',
               fontSize: '1rem',
               fontWeight: 'bold',
               color: '#fff',
-              backgroundColor: '#5D758E',
+              backgroundColor: '#007bff',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',
