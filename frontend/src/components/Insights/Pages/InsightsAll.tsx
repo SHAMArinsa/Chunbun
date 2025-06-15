@@ -56,13 +56,13 @@ const InsightsAll: React.FC = () => {
             Explore Insights
           </h1>
           <button
-            onClick={() => window.location.href = '/contact'} // Adjust URL as needed
+            onClick={() => window.location.href = '/connect'} // Adjust URL as needed
             style={{
               padding: '10px 20px',
               fontSize: '1rem',
               fontWeight: 'bold',
               color: '#fff',
-              backgroundColor: '#007bff',
+              backgroundColor:  '#5D758E',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',

@@ -119,7 +119,7 @@ const ServicesAll: React.FC = () => {
               fontSize: '1rem',
               fontWeight: 'bold',
               color: '#fff',
-              backgroundColor: '#007bff',
+              backgroundColor: '#5D758E',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',

@@ -105,51 +105,61 @@ const IndustriesAll: React.FC = () => {
   };
 
   return (
-    <div style={{ color: '#000' }}>
-      {/* Banner */}
+  <div>
+    {/* Industries Banner Styled Like Insights */}
+    <div
+      style={{
+        backgroundImage: 'url("/image/industries-cover.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '600px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        textAlign: 'left',
+        padding: '0 40px',
+        position: 'relative',
+      }}
+    >
       <div
         style={{
-          backgroundImage: 'url("/image/industries-cover.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          height: '700px',
-          width: '100%',
+          position: 'absolute',
+          bottom: '40px',
+          left: '40px',
           display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'flex-start',
-          padding: '40px',
-          position: 'relative',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          gap: '10px',
         }}
       >
-        <div
+        <h1
           style={{
-            position: 'absolute',
-            bottom: '40px',
-            left: '40px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
+            fontSize: '3rem',
             color: '#fff',
+            margin: 0,
+            fontWeight: 'bold',
           }}
         >
-          <h1 style={{ fontSize: '2.5rem', margin: 0 }}>Explore Industries with Us</h1>
-          <button
-            onClick={() => (window.location.href = '/contact')}
-            style={{
-              padding: '10px 20px',
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              color: '#fff',
-              backgroundColor: '#5D758E',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-            }}
-          >
-            Contact Us
-          </button>
-        </div>
+          Explore Industries with Us
+        </h1>
+        <button
+          onClick={() => (window.location.href = '/contact')}
+          style={{
+            padding: '6px 12px',
+            fontSize: '0.95rem',
+            fontWeight: 'bold',
+            color: '#fff',
+            backgroundColor: '#5D758E',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Contact Us
+        </button>
       </div>
+    </div>
+  
 
       {/* Introduction Section */}
       <div
