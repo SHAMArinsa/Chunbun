@@ -221,8 +221,8 @@ const HomePageContent: React.FC = () => {
               </div>
               <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>{service.title}</h3>
               <p>{service.description}</p>
-              <a
-                href="/connect"
+              <Link
+                to="/connect"
                 style={{
                   marginTop: '1rem',
                   display: 'inline-block',
@@ -232,10 +232,10 @@ const HomePageContent: React.FC = () => {
                   textDecoration: 'none',
                   borderRadius: '6px',
                   fontWeight: 'bold',
-                }}
-              >
-                Contact Us
-              </a>
+                  }}
+                >
+                  Contact Us
+              </Link>
             </div>
           ))}
         </div>
@@ -364,19 +364,19 @@ const HomePageContent: React.FC = () => {
         >
           {[
             {
-              img: 'image/pic1.jpg',
+              img: 'public/image/pic1.jpg',
               title: 'Generative AI Solutions',
               desc: 'Custom models, image & text generation, and AI creativity tools.',
               id: 'generative-ai',
             },
             {
-              img: 'image/pic2.jpg',
+              img: 'public/image/pic2.jpg',
               title: 'AI Agents for Business',
               desc: 'Virtual assistants, support bots & process automation.',
               id: 'ai-agent',
             },
             {
-              img: 'image/pic3.jpg',
+              img: 'public/image/pic3.jpg',
               title: 'AI Automation',
               desc: 'Smart automation using ML, NLP, and Computer Vision.',
               id: 'ai-automation',
@@ -388,8 +388,8 @@ const HomePageContent: React.FC = () => {
                 flex: '1 1 300px',
                 backgroundColor: '#ffffff',
                 borderRadius: '10px',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                 padding: '1rem',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                 textAlign: 'center',
               }}
             >
@@ -416,7 +416,7 @@ const HomePageContent: React.FC = () => {
       {/* Case Studies Background Banner */}
       <div
         style={{
-          backgroundImage: 'url("/image/case_studies.jpg")',
+          backgroundImage: 'url("image/case_studies.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: isMobile ? '400px' : '100vh',
