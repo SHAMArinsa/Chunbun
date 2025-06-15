@@ -2,20 +2,20 @@ import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const IndustriesAll: React.FC = () => {
-  const {hash} = useLocation();
+  const { hash } = useLocation();
   const navigate = useNavigate();
 
-    useEffect(() => {
-      if (hash) {
-        const id = hash.replace('#', '');
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
-    }, [hash]);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [hash]);
 
   const industries = [
     {
@@ -113,51 +113,42 @@ const IndustriesAll: React.FC = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '700px',
-          width: '94.7%',
+          width: '100%',
           display: 'flex',
           alignItems: 'flex-end',
           justifyContent: 'flex-start',
           padding: '40px',
-          textAlign: 'left',
+          position: 'relative',
         }}
       >
         <div
-    style={{
-      position: 'absolute',
-      bottom: '40px',
-      left: '40px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      gap: '10px',
-      textAlign: 'left',
-    }}
-  >
-        <h1
           style={{
-            fontSize: '2.5rem',
+            position: 'absolute',
+            bottom: '40px',
+            left: '40px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
             color: '#fff',
-            margin: 0,
           }}
         >
-          Explore Industries with Us
-        </h1>
-        <button
-      onClick={() => window.location.href = '/contact'} // Adjust URL as needed
-      style={{
-        padding: '10px 20px',
-        fontSize: '1rem',
-        fontWeight: 'bold',
-        color: '#fff',
-        backgroundColor: '#007bff',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-      }}
-    >
-      Contact Us
-    </button>
-    </div>
+          <h1 style={{ fontSize: '2.5rem', margin: 0 }}>Explore Industries with Us</h1>
+          <button
+            onClick={() => (window.location.href = '/contact')}
+            style={{
+              padding: '10px 20px',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              color: '#fff',
+              backgroundColor: '#5D758E',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            Contact Us
+          </button>
+        </div>
       </div>
 
       {/* Introduction Section */}
@@ -172,7 +163,7 @@ const IndustriesAll: React.FC = () => {
         <div style={{ maxWidth: '900px' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Industries We Serve</h2>
           <p style={{ fontSize: '1.2rem' }}>
-            At ARINSA AI MINDS, we specialize in providing transformative technology solutions across a variety of industries. 
+            At ARINSA AI MINDS, we specialize in providing transformative technology solutions across a variety of industries.
             Whether it's advanced manufacturing, healthcare, or education, we bring innovative solutions to help businesses evolve.
           </p>
         </div>
@@ -195,11 +186,10 @@ const IndustriesAll: React.FC = () => {
                 backgroundImage: `url("${industry.image}")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                padding: '30px',
                 borderRadius: '12px',
                 position: 'relative',
                 minHeight: '300px',
-                color: '#fff',
+                overflow: 'hidden',
                 cursor: 'pointer',
               }}
               onClick={() => handleClick(industry.path)}
@@ -214,6 +204,7 @@ const IndustriesAll: React.FC = () => {
                   backgroundColor: 'rgba(0,0,0,0.6)',
                   borderRadius: '12px',
                   padding: '30px',
+                  color: '#fff',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
@@ -225,8 +216,6 @@ const IndustriesAll: React.FC = () => {
                 </div>
                 <button
                   style={{
-                    marginTop: '20px',
-                    alignSelf: 'flex-start',
                     backgroundColor: '#ffffff',
                     color: '#000000',
                     padding: '10px 24px',
@@ -235,37 +224,79 @@ const IndustriesAll: React.FC = () => {
                     cursor: 'pointer',
                     fontWeight: 600,
                     fontSize: '1rem',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+                    alignSelf: 'flex-start',
                     transition: 'all 0.3s ease-in-out',
                   }}
                   onMouseOver={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#000';
-                    (e.currentTarget as HTMLButtonElement).style.color = '#fff';
-                    (e.currentTarget as HTMLButtonElement).style.border = '2px solid #000';
+                    e.currentTarget.style.backgroundColor = '#000';
+                    e.currentTarget.style.color = '#fff';
+                    e.currentTarget.style.border = '2px solid #000';
                   }}
                   onMouseOut={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#fff';
-                    (e.currentTarget as HTMLButtonElement).style.color = '#000';
-                    (e.currentTarget as HTMLButtonElement).style.border = '2px solid #fff';
-                  }}
-                  onClick={() => {
-                    const industryId = industry.id;
-                    window.location.hash = industryId;
-                    setTimeout(() => {
-                      const element = document.getElementById(industryId);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }, 100);
+                    e.currentTarget.style.backgroundColor = '#fff';
+                    e.currentTarget.style.color = '#000';
+                    e.currentTarget.style.border = '2px solid #fff';
                   }}
                 >
-                  Read more 
+                  Read more
                 </button>
               </div>
             </section>
           ))}
         </div>
       </div>
+
+      {/* Mobile Fix Styles */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            div[style*="industries-cover.jpg"] {
+              height: 400px !important;
+              padding: 20px !important;
+              background-position: center !important;
+            }
+
+            h1 {
+              font-size: 1.5rem !important;
+            }
+
+            button {
+              font-size: 0.9rem !important;
+              padding: 8px 16px !important;
+            }
+
+            div[style*="background-color: #777"] h2 {
+              font-size: 1.3rem !important;
+            }
+
+            div[style*="background-color: #777"] p {
+              font-size: 1rem !important;
+            }
+
+            div[style*="display: grid"] {
+              gap: 20px !important;
+            }
+
+            section {
+              min-height: 280px !important;
+              padding: 20px !important;
+            }
+
+            section h2 {
+              font-size: 1.1rem !important;
+            }
+
+            section p {
+              font-size: 0.9rem !important;
+            }
+
+            section button {
+              font-size: 0.85rem !important;
+              padding: 6px 14px !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

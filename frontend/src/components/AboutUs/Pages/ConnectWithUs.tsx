@@ -1,5 +1,3 @@
-// frontend/src/components/AboutUs/Pages/ConnectWithUs.tsx
-
 import React, { useState, useEffect } from 'react';
 
 const inputStyle: React.CSSProperties = {
@@ -11,11 +9,19 @@ const inputStyle: React.CSSProperties = {
   transition: 'border-color 0.3s ease',
   color: '#000',
   backgroundColor: '#fff',
+  width: '100%',
+  boxSizing: 'border-box',
 };
 
 const ConnectWithUs: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const [formData, setFormData] = useState({
@@ -30,21 +36,15 @@ const ConnectWithUs: React.FC = () => {
 
   const [customISD, setCustomISD] = useState('');
 
-  const validateEmail = (email: string) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email.toLowerCase());
-  };
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.toLowerCase());
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-
     if (name === 'countryCode') {
       setFormData({ ...formData, countryCode: value });
-      if (value !== 'other') {
-        setCustomISD('');
-      }
+      if (value !== 'other') setCustomISD('');
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -53,38 +53,22 @@ const ConnectWithUs: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateEmail(formData.email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
+    if (!validateEmail(formData.email)) return alert('Please enter a valid email address.');
+    if (formData.countryCode === 'other' && !/^\+\d{1,4}$/.test(customISD.trim()))
+      return alert('Enter a valid ISD code (e.g. +61)');
+    if (!/^\d{10}$/.test(formData.phoneNumber))
+      return alert('Please enter a valid 10-digit phone number.');
+    if (!formData.subject) return alert('Please select a subject.');
 
-    if (formData.countryCode === 'other') {
-      const trimmedISD = customISD.trim();
-      if (!/^\+\d{1,4}$/.test(trimmedISD)) {
-        alert('Please enter a valid ISD code starting with + and up to 4 digits.');
-        return;
-      }
-    }
-
-    if (!/^\d{10}$/.test(formData.phoneNumber)) {
-      alert('Please enter a valid 10-digit phone number.');
-      return;
-    }
-
-    if (!formData.subject) {
-      alert('Please select a subject.');
-      return;
-    }
-
-    const isdCode = formData.countryCode === 'other' ? customISD.trim() : formData.countryCode;
-    const fullPhone = `${isdCode}${formData.phoneNumber}`;
+    const fullPhone =
+      formData.countryCode === 'other'
+        ? customISD.trim() + formData.phoneNumber
+        : formData.countryCode + formData.phoneNumber;
 
     try {
       const response = await fetch(`https://api.arinsaaiminds.com/api/v1/enquiries/`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           first_name: formData.firstName,
           last_name: formData.lastName,
@@ -100,7 +84,6 @@ const ConnectWithUs: React.FC = () => {
         localStorage.setItem('enquirySessionId', result.session_id || '');
         localStorage.setItem('enquiryFormData', JSON.stringify(formData));
         alert('Thank you for reaching out! We’ll get back to you soon.');
-
         setFormData({
           firstName: '',
           lastName: '',
@@ -148,7 +131,7 @@ const ConnectWithUs: React.FC = () => {
       <div
         style={{
           position: 'relative',
-          padding: '40px',
+          padding: '30px 20px',
           maxWidth: '700px',
           width: '100%',
           borderRadius: '10px',
@@ -156,13 +139,34 @@ const ConnectWithUs: React.FC = () => {
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
           color: '#fff',
           fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          boxSizing: 'border-box',
         }}
       >
+        <style>
+          {`
+            @media (max-width: 768px) {
+              h1 {
+                font-size: 2rem !important;
+              }
+              p {
+                font-size: 1rem !important;
+              }
+              form {
+                gap: 12px !important;
+              }
+              button {
+                font-size: 16px !important;
+                padding: 12px !important;
+              }
+            }
+          `}
+        </style>
+
         <h1
           style={{
             marginBottom: '10px',
             textAlign: 'center',
-            fontWeight: '700',
+            fontWeight: 700,
             fontSize: '2.5rem',
             textShadow: '1px 1px 4px rgba(0,0,0,0.7)',
           }}
@@ -182,41 +186,27 @@ const ConnectWithUs: React.FC = () => {
           or visit one of our offices. Let's collaborate to shape the future together.
         </p>
 
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-            style={inputStyle}
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-            style={inputStyle}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email ID"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            style={inputStyle}
-          />
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
+          <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required style={inputStyle} />
+          <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required style={inputStyle} />
+          <input type="email" name="email" placeholder="Email ID" value={formData.email} onChange={handleChange} required style={inputStyle} />
+
+          <div
+            className="phone-container"
+            style={{
+              display: 'flex',
+              gap: '10px',
+              flexWrap: 'wrap',
+              flexDirection: isMobile ? 'column' : 'row',
+              width: '100%',
+            }}
+          >
             <select
               name="countryCode"
               value={formData.countryCode}
               onChange={handleChange}
               required
-              style={{ ...inputStyle, flex: '1', minWidth: '120px' }}
+              style={{ ...inputStyle, flex: 1, minWidth: '120px' }}
             >
               <option value="+91">🇮🇳 +91</option>
               <option value="other">🌍 Other</option>
@@ -230,7 +220,7 @@ const ConnectWithUs: React.FC = () => {
                 value={customISD}
                 onChange={(e) => setCustomISD(e.target.value)}
                 required
-                style={{ ...inputStyle, flex: '1', minWidth: '140px' }}
+                style={{ ...inputStyle, flex: 1, minWidth: '120px' }}
               />
             )}
 
@@ -243,7 +233,7 @@ const ConnectWithUs: React.FC = () => {
               required
               maxLength={10}
               pattern="\d{10}"
-              style={{ ...inputStyle, flex: '2', minWidth: '200px' }}
+              style={{ ...inputStyle, flex: 2, minWidth: '200px' }}
             />
           </div>
 
@@ -252,16 +242,22 @@ const ConnectWithUs: React.FC = () => {
             value={formData.subject}
             onChange={handleChange}
             required
-            style={{ ...inputStyle, padding: '10px' }}
+            style={{
+              ...inputStyle,
+              whiteSpace: 'normal',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+            }}
           >
             <option value="" disabled>
-              Need assistance? We’re here to help.
+              {isMobile ? 'Select Subject' : 'Need assistance? We’re here to help.'}
             </option>
             <option value="Services for clients">Services for clients</option>
             <option value="Course enquiry">Course enquiry</option>
             <option value="Project Collaboration (For other companies)">
-              Project Collaboration (For other companies)
+              {isMobile ? 'Project Collaboration' : 'Project Collaboration (For other companies)'}
             </option>
+            <option value="Special Live AI Courses">Special Live AI Courses</option>
             <option value="Internship enquiry">Internship enquiry</option>
             <option value="Our product Services">Our product Services</option>
             <option value="Outsourcing">Outsourcing</option>
@@ -281,15 +277,13 @@ const ConnectWithUs: React.FC = () => {
               ...inputStyle,
               resize: 'vertical',
               minHeight: '120px',
-              color: '#000',
-              backgroundColor: '#fff',
             }}
           />
 
           <button
             type="submit"
             style={{
-              backgroundColor: '#007BFF',
+              backgroundColor: '#5D758E',
               color: '#fff',
               fontWeight: '600',
               padding: '14px',
@@ -298,9 +292,10 @@ const ConnectWithUs: React.FC = () => {
               cursor: 'pointer',
               fontSize: '18px',
               transition: 'background-color 0.3s ease',
+              width: '100%',
             }}
             onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#0056b3')}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#007BFF')}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#5D758E')}
           >
             Submit
           </button>

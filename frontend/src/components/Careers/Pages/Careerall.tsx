@@ -1,26 +1,26 @@
-// frontend/src/components/Careers/pages/CareerAll.tsx
 import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
 const CareerAll: React.FC = () => {
-  const {hash} = useLocation();
+  const { hash } = useLocation();
 
-    useEffect(() => {
-      if (hash) {
-        const id = hash.replace('#', '');
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
-    }, [hash]);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [hash]);
 
   return (
     <div style={{ color: '#000' }}>
-      {/* Background Image Banner */}
+      {/* Banner */}
       <div
+        className="career-banner"
         style={{
           backgroundImage: 'url("/image/career1.jpg")',
           backgroundSize: 'cover',
@@ -35,6 +35,7 @@ const CareerAll: React.FC = () => {
         }}
       >
         <h1
+          className="career-title"
           style={{
             fontSize: '2.5rem',
             color: '#fff',
@@ -45,7 +46,7 @@ const CareerAll: React.FC = () => {
         </h1>
       </div>
 
-      {/* About Careers at ARINSA AI MINDS Section */}
+      {/* About Section */}
       <div
         style={{
           backgroundColor: '#777',
@@ -55,8 +56,10 @@ const CareerAll: React.FC = () => {
         }}
       >
         <div style={{ maxWidth: '900px' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Careers at ARINSA AI MINDS</h2>
-          <p style={{ fontSize: '1.2rem' }}>
+          <h2 className="career-heading" style={{ fontSize: '2rem', marginBottom: '20px' }}>
+            Careers at ARINSA AI MINDS
+          </h2>
+          <p className="career-description" style={{ fontSize: '1.2rem' }}>
             At ARINSA AI MINDS, we believe in building a future driven by innovation, technology, and talent.
             Join our dynamic team of professionals working at the forefront of AI, education, and digital transformation.
             Whether you're a developer, educator, strategist, or visionary, there's a place for you in our mission to
@@ -65,40 +68,34 @@ const CareerAll: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid with Career Options */}
+      {/* Career Grid */}
       <div style={{ padding: '80px 40px' }}>
         <div
+          className="career-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '40px',
           }}
         >
-          {/* Job Search */}
           <Section
             id="job-search"
             image="/image/career5.jpg"
             title="Job Search"
             description="Find open positions and apply today."
           />
-
-          {/* Careers in ARINSA */}
           <Section
             id="careers-in-arinsa"
             image="/image/career6.jpg"
             title="Careers in ARINSA"
             description="Discover exciting opportunities and growth pathways."
           />
-
-          {/* How to Join Us */}
           <Section
             id="how-to-join-us"
             image="/image/career7.jpg"
             title="How to Join Us"
             description="See the steps to become part of our innovative team."
           />
-
-          {/* Internships */}
           <Section
             id="internships"
             image="/image/career8.jpg"
@@ -107,11 +104,44 @@ const CareerAll: React.FC = () => {
           />
         </div>
 
-        {/* Caption below grid */}
         <div style={{ marginTop: '40px', textAlign: 'center', color: '#000' }}>
           <h3>Your journey to a smarter career begins here at ARINSA AI MINDS.</h3>
         </div>
       </div>
+
+      {/* Mobile-Responsive CSS */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .career-banner {
+              height: 400px !important;
+              padding: 20px !important;
+              width: 100% !important;
+            }
+            .career-title {
+              font-size: 1.8rem !important;
+            }
+            .career-heading {
+              font-size: 1.5rem !important;
+            }
+            .career-description {
+              font-size: 1rem !important;
+            }
+            .career-grid {
+              grid-template-columns: 1fr !important;
+              gap: 20px !important;
+            }
+            section[id] {
+              min-height: 250px !important;
+              padding: 20px !important;
+            }
+            a {
+              font-size: 0.9rem !important;
+              padding: 8px 16px !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

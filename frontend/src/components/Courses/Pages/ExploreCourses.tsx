@@ -1,24 +1,21 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ExploreCourses: React.FC = () => {
-
-  const {hash} = useLocation();
+  const { hash } = useLocation();
   const navigate = useNavigate();
 
-    useEffect(() => {
-      if (hash) {
-        const id = hash.replace('#', '');
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
-    }, [hash]);
-
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [hash]);
 
   const courses = [
     {
@@ -53,14 +50,6 @@ const ExploreCourses: React.FC = () => {
         'Explore unique, niche-focused programs designed to give you an edge in emerging fields like blockchain, quantum computing, and more.',
       external: false,
     },
-    //{
-     // label: 'Other Courses',
-     // path: 'https://www.arinsaedu.com/courses/other-courses',
-      //image: '/image/other.jpg',
-      //description:
-      //  'Discover additional learning opportunities including short-term workshops, certifications, and continuing education programs hosted on our official website.',
-      //external: true,
-    //},
   ];
 
   const handleClick = (path: string, external: boolean) => {
@@ -75,6 +64,7 @@ const ExploreCourses: React.FC = () => {
     <div style={{ color: '#000' }}>
       {/* Banner */}
       <div
+        className="explore-banner"
         style={{
           backgroundImage: 'url("/image/explore-banner.jpg")',
           backgroundSize: 'cover',
@@ -85,7 +75,6 @@ const ExploreCourses: React.FC = () => {
           justifyContent: 'flex-start',
           textAlign: 'left',
           padding: '0 40px',
-
         }}
       >
         <h1 style={{ fontSize: '2.5rem', color: '#fff', margin: 0 }}>
@@ -95,6 +84,7 @@ const ExploreCourses: React.FC = () => {
 
       {/* Intro */}
       <div
+        className="explore-intro"
         style={{
           backgroundColor: '#eee',
           color: '#222',
@@ -112,12 +102,13 @@ const ExploreCourses: React.FC = () => {
         </div>
       </div>
 
-      {/* Full-width stacked sections */}
+      {/* Course Sections */}
       <div>
         {courses.map((course) => (
           <div
             key={course.label}
             onClick={() => handleClick(course.path, course.external)}
+            className="course-section"
             style={{
               backgroundImage: `url("${course.image}")`,
               backgroundSize: 'cover',
@@ -164,6 +155,51 @@ const ExploreCourses: React.FC = () => {
       <div style={{ marginTop: '40px', textAlign: 'center', color: '#000' }}>
         <h3>Start your learning journey with ARINSA AI MINDS today.</h3>
       </div>
+
+      {/* Responsive Styling */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .explore-banner {
+              height: 300px !important;
+              padding: 0 20px !important;
+            }
+
+            .explore-banner h1 {
+              font-size: 1.8rem !important;
+            }
+
+            .explore-intro {
+              padding: 40px 20px !important;
+            }
+
+            .explore-intro h2 {
+              font-size: 1.5rem !important;
+            }
+
+            .explore-intro p {
+              font-size: 1rem !important;
+            }
+
+            .course-section {
+              padding: 40px 20px !important;
+            }
+
+            .course-section h2 {
+              font-size: 1.5rem !important;
+            }
+
+            .course-section p {
+              font-size: 1rem !important;
+            }
+
+            .course-section div[style*="padding: '10px 20px'"] {
+              padding: 8px 16px !important;
+              font-size: 0.95rem !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

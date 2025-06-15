@@ -1,5 +1,3 @@
-// src/components/Careers/RightSpotlight.tsx
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +13,7 @@ const RightSpotlight: React.FC<{ closeDropdown?: () => void }> = ({ closeDropdow
   return (
     <div style={{ flex: 1 }}>
       <h3 style={{ color: '#ffd700' }}>Spotlight</h3>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {spotlightItems.map((item) => (
           <li
             key={item.label}
@@ -29,12 +27,28 @@ const RightSpotlight: React.FC<{ closeDropdown?: () => void }> = ({ closeDropdow
               cursor: 'pointer',
               color: '#ccc',
               fontWeight: 'bold',
+              fontSize: '16px',
             }}
           >
             {item.label}
           </li>
         ))}
       </ul>
+
+      {/* Mobile-specific adjustments */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            li {
+              padding: 8px 0 !important;
+              font-size: 14px !important;
+            }
+            h3 {
+              font-size: 18px !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

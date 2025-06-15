@@ -16,12 +16,50 @@ const GovernmentPublic: React.FC = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [hash]);
+
   return (
     <div>
-      {/* Government & Public Banner */}
+      {/* Responsive Styling */}
+      <style>{`
+        @media (max-width: 768px) {
+          .gov-banner {
+            height: 300px !important;
+            padding: 0 20px !important;
+          }
+          .gov-banner h1 {
+            font-size: 2rem !important;
+          }
+          .gov-section {
+            padding: 30px 20px !important;
+            font-size: 1rem !important;
+          }
+          .desktop-only {
+            display: none !important;
+          }
+          .mobile-only {
+            display: block !important;
+          }
+          .box {
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .mobile-only {
+            display: none !important;
+          }
+        }
+      `}</style>
+
+      {/* Banner */}
       <div
+        className="gov-banner"
         style={{
-          backgroundImage: 'url("/image/gov.jpg")', // Replace with actual banner image path
+          backgroundImage: 'url("/image/gov.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '600px',
@@ -32,42 +70,20 @@ const GovernmentPublic: React.FC = () => {
           padding: '0 40px',
         }}
       >
-        <h1
-          style={{
-            fontSize: '3rem',
-            color: '#fff',
-            margin: 0,
-            fontWeight: 'bold',
-          }}
-        >
+        <h1 style={{ fontSize: '3rem', color: '#fff', margin: 0, fontWeight: 'bold' }}>
           Government & Public
         </h1>
       </div>
 
-      {/* Government & Public Content */}
-      <section
-        style={{
-          padding: '60px 40px',
-          backgroundColor: '#2c2c2c',
-          color: '#fff',
-          fontSize: '1.5rem',
-        }}
-      >
+      {/* Desktop View */}
+      <section className="gov-section desktop-only" style={{ padding: '60px 40px', backgroundColor: '#2c2c2c', color: '#fff', fontSize: '1.5rem' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>
           Modernizing Governance Through Technology, Transparency & Inclusion
         </h2>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px' }}>
-          {/* Government Images */}
           <div style={{ flex: '1 1 40%' }}>
-            {[
-              'gov1.jpg',
-              'gov3.jpg',
-              'gov4.jpg',
-              'gov5.jpg',
-              'gov6.jpg',
-              'gov7.jpg',
-            ].map((src, index) => (
+            {['gov1.jpg', 'gov3.jpg', 'gov4.jpg', 'gov5.jpg', 'gov7.jpg'].map((src, index) => (
               <img
                 key={index}
                 src={`/image/${src}`}
@@ -81,7 +97,6 @@ const GovernmentPublic: React.FC = () => {
             ))}
           </div>
 
-          {/* Government Text */}
           <div style={{ flex: '1 1 55%' }}>
             <p style={{ fontSize: '2.5rem', lineHeight: '1.7' }}>
               <strong>Governments globally</strong> are embracing digital transformation to deliver transparent, efficient, and citizen-centric services. Arinsa partners with public sector entities to accelerate innovation and foster inclusive growth.
@@ -128,11 +143,11 @@ const GovernmentPublic: React.FC = () => {
 
             <h2>Use Cases in Government & Public Services</h2>
             <ul>
-              <li><strong>Digital Passport & Identity Management:</strong> Simplified global travel and authentication.</li>
-              <li><strong>Online Tax Portals:</strong> Automated filing and refund processes for citizens and businesses.</li>
-              <li><strong>Real-Time Crime Mapping:</strong> Predictive policing with data-driven crime tracking.</li>
-              <li><strong>E-Governance Portals:</strong> One-stop access to certificates, schemes, and land records.</li>
-              <li><strong>AI-Powered Welfare Disbursement:</strong> Fraud detection and streamlined subsidy delivery.</li>
+              <li><strong>Digital Passport & Identity Management</strong></li>
+              <li><strong>Online Tax Portals</strong></li>
+              <li><strong>Real-Time Crime Mapping</strong></li>
+              <li><strong>E-Governance Portals</strong></li>
+              <li><strong>AI-Powered Welfare Disbursement</strong></li>
             </ul>
 
             <h2>How Arinsa Supports Government Modernization</h2>
@@ -148,6 +163,82 @@ const GovernmentPublic: React.FC = () => {
               Arinsa enables public sector transformation with citizen-first innovation, scalable platforms, and future-ready digital solutions.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Mobile View */}
+      <section className="gov-section mobile-only" style={{ backgroundColor: '#2c2c2c', color: '#fff' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '30px', padding: '20px' }}>
+          Modernizing Governance Through Technology, Transparency & Inclusion
+        </h2>
+
+        <div className="box"><strong>Governments globally</strong> are embracing digital transformation to deliver transparent, efficient, and citizen-centric services. Arinsa partners with public sector entities to accelerate innovation and foster inclusive growth.</div>
+
+        <div className="box">
+          <h3>Key Trends</h3>
+          <ul>
+            <li>Digital governance platforms.</li>
+            <li>Open data for transparency.</li>
+            <li>Smart cities with AI/IoT.</li>
+            <li>Cloud-first public infrastructure.</li>
+            <li>Cybersecurity in public trust.</li>
+          </ul>
+        </div>
+
+        <div className="box">
+          <h3>Benefits of Digital Services</h3>
+          <ul>
+            <li>Faster service & automation.</li>
+            <li>RTI & grievance portals.</li>
+            <li>Lower admin costs.</li>
+            <li>Inclusion for all citizens.</li>
+            <li>Emergency response systems.</li>
+          </ul>
+        </div>
+
+        <div className="box">
+          <h3>Emerging Technologies</h3>
+          <ul>
+            <li>AI chatbots & virtual help.</li>
+            <li>Blockchain for public data.</li>
+            <li>Biometrics for safety.</li>
+            <li>Geospatial urban insights.</li>
+            <li>Digital ID and e-KYC tools.</li>
+          </ul>
+        </div>
+
+        <div className="box">
+          <h3>Challenges</h3>
+          <ul>
+            <li>Old legacy systems.</li>
+            <li>Privacy & ethics concerns.</li>
+            <li>Lack of digital training.</li>
+            <li>Poor inter-dept coordination.</li>
+            <li>Slow procurement models.</li>
+          </ul>
+        </div>
+
+        <div className="box">
+          <h3>Use Cases</h3>
+          <ul>
+            <li>Digital identity & passports.</li>
+            <li>Online tax portals.</li>
+            <li>Crime prediction maps.</li>
+            <li>Unified governance portals.</li>
+            <li>AI-enabled subsidy systems.</li>
+          </ul>
+        </div>
+
+        <div className="box">
+          <h3>How Arinsa Helps</h3>
+          <ul>
+            <li>E-gov portals & dashboards.</li>
+            <li>AI for policy & sentiment.</li>
+            <li>Cloud for public systems.</li>
+            <li>Blockchain records.</li>
+            <li>Multilingual mobile apps.</li>
+          </ul>
+          <p>We build future-ready, citizen-focused digital government solutions.</p>
         </div>
       </section>
     </div>

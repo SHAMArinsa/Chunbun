@@ -2,21 +2,19 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ServicesAll: React.FC = () => {
-  const {hash} = useLocation();
-  
+  const { hash } = useLocation();
 
-    useEffect(() => {
-      if (hash) {
-        const id = hash.replace('#', '');
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
-    }, [hash]);
-
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [hash]);
 
   const sections = [
     {
@@ -34,7 +32,6 @@ const ServicesAll: React.FC = () => {
         </>
       )
     },
-  
     {
       id: 'technology',
       title: 'Technology',
@@ -72,7 +69,6 @@ const ServicesAll: React.FC = () => {
         </>
       )
     },
-
     {
       id: 'people-and-workforce',
       title: 'People and Workforce',
@@ -88,57 +84,51 @@ const ServicesAll: React.FC = () => {
         </>
       )
     }
-    
   ];
 
   return (
     <div>
-      
-      {/* Banner */}
-<div
-  style={{
-    backgroundImage: 'url("/image/service1.jpg")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    height: '600px',
-    position: 'relative', // Needed for absolute positioning inside
-  }}
->
-  <div
-    style={{
-      position: 'absolute',
-      bottom: '40px',
-      left: '40px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      gap: '10px',
-    }}
-  >
-    <h1 style={{ fontSize: '3rem', color: '#fff', fontWeight: 'bold', margin: 0 }}>
-      View Services
-    </h1>
-    <button
-      onClick={() => window.location.href = '/connect'} // Adjust as needed
-      style={{
-        padding: '10px 20px',
-        fontSize: '1rem',
-        fontWeight: 'bold',
-        color: '#fff',
-        backgroundColor: '#007bff',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-      }}
-    >
-      Contact Us
-    </button>
-  </div>
-</div>
+      <div
+        style={{
+          backgroundImage: 'url("/image/service1.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          height: '600px',
+          position: 'relative',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '40px',
+            left: '40px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '10px',
+          }}
+        >
+          <h1 style={{ fontSize: '3rem', color: '#fff', fontWeight: 'bold', margin: 0 }}>
+            View Services
+          </h1>
+          <button
+            onClick={() => window.location.href = '/connect'}
+            style={{
+              padding: '10px 20px',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              color: '#fff',
+              backgroundColor: '#007bff',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            Contact Us
+          </button>
+        </div>
+      </div>
 
-      
-
-      {/* Intro Text */}
       <div
         style={{
           backgroundColor: '#777',
@@ -159,27 +149,26 @@ const ServicesAll: React.FC = () => {
         </div>
       </div>
 
-      {/* Spacer between intro and first section */}
       <div style={{ height: '40px', backgroundColor: '#f5f5f5' }} />
 
-      {/* Section Rows */}
       {sections.map((section) => (
         <div
           key={section.id}
           id={section.id}
+          className="section-row"
           style={{
             display: 'flex',
             flexDirection: 'row',
-            alignItems: 'center', // Vertical center alignment
+            alignItems: 'center',
             justifyContent: 'flex-start',
             padding: '60px 40px',
             borderBottom: '10px solid #ddd',
             gap: '40px',
-            flexWrap: 'nowrap',
-            background:'#A9A9A9',
+            background: '#A9A9A9',
+            flexWrap: 'wrap',
           }}
         >
-          <div style={{ flex: '0 0 400px' }}>
+          <div className="section-img" style={{ flex: '0 0 400px' }}>
             <img
               src={section.image}
               alt={section.title}
@@ -191,12 +180,50 @@ const ServicesAll: React.FC = () => {
               }}
             />
           </div>
-          <div style={{ flex: '1', minWidth: '300px', textAlign: 'left' }}>
+          <div
+            className="section-content"
+            style={{
+              flex: '1',
+              minWidth: '300px',
+              textAlign: 'left',
+            }}
+          >
             <h2 style={{ fontSize: '1.8rem', marginBottom: '20px' }}>{section.title}</h2>
             <div style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>{section.content}</div>
           </div>
         </div>
       ))}
+
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .section-row {
+              flex-direction: column !important;
+              padding: 30px 20px !important;
+              text-align: left;
+            }
+
+            .section-img {
+              flex: unset !important;
+              width: 100% !important;
+              margin-bottom: 20px;
+            }
+
+            .section-content h2 {
+              font-size: 1.5rem !important;
+            }
+
+            .section-content div {
+              font-size: 1rem !important;
+              line-height: 1.5 !important;
+            }
+
+            .section-content {
+              min-width: 100% !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

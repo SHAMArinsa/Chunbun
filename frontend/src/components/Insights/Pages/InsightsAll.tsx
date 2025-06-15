@@ -30,46 +30,47 @@ const InsightsAll: React.FC = () => {
           justifyContent: 'flex-start',  // Align content to the left
           textAlign: 'left',  // Left-align the text
           padding: '0 40px', // Optional left padding to give space from the edge
+          position: 'relative',
         }}
       >
         <div
-    style={{
-      position: 'absolute',
-      bottom: '40px',
-      left: '40px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      gap: '10px',
-      textAlign: 'left',
-    }}
-  >
-        <h1
           style={{
-            fontSize: '3rem',  // Adjust the size as needed
-            color: '#fff',
-            margin: 0,
-            fontWeight: 'bold',
+            position: 'absolute',
+            bottom: '40px',
+            left: '40px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '10px',
+            textAlign: 'left',
           }}
         >
-          Explore Insights
-        </h1>
-        <button
-      onClick={() => window.location.href = '/contact'} // Adjust URL as needed
-      style={{
-        padding: '10px 20px',
-        fontSize: '1rem',
-        fontWeight: 'bold',
-        color: '#fff',
-        backgroundColor: '#007bff',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-      }}
-    >
-      Contact Us
-    </button>
-      </div>
+          <h1
+            style={{
+              fontSize: '3rem',  // Adjust the size as needed
+              color: '#fff',
+              margin: 0,
+              fontWeight: 'bold',
+            }}
+          >
+            Explore Insights
+          </h1>
+          <button
+            onClick={() => window.location.href = '/contact'} // Adjust URL as needed
+            style={{
+              padding: '10px 20px',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              color: '#fff',
+              backgroundColor: '#007bff',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            Contact Us
+          </button>
+        </div>
       </div>
 
       {/* Section: AI */}
@@ -85,8 +86,8 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>ARTIFICIAL INTELLIGENCE</h2>
-        
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
+
+        <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
             <img
               src="/image/insightsai.jpg"
@@ -120,8 +121,8 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>RISK</h2>
-        
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
+
+        <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
             <img
               src="/image/insightsrisk.jpg"
@@ -152,8 +153,8 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>TECHNOLOGY</h2>
-        
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
+
+        <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
             <img
               src="/image/insightstechnology.jpg"
@@ -184,8 +185,8 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>TRANSFORMATION</h2>
-        
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
+
+        <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
             <img
               src="/image/insightstransformation.jpg"
@@ -203,6 +204,38 @@ const InsightsAll: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Responsive Media Query */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .section-flex {
+              flex-direction: column !important;
+            }
+
+            .section-flex > div {
+              flex: 1 1 100% !important;
+            }
+
+            h1 {
+              font-size: 2rem !important;
+            }
+
+            h2 {
+              font-size: 2rem !important;
+            }
+
+            p {
+              font-size: 1.2rem !important;
+            }
+
+            button {
+              font-size: 0.9rem !important;
+              padding: 8px 16px !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

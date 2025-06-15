@@ -15,12 +15,13 @@ const Transportation: React.FC = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [hash]);
+
   return (
     <div>
-      {/* Transportation Banner */}
+      {/* Banner */}
       <div
         style={{
-          backgroundImage: 'url("/image/trans.jpg")', // update with actual banner image path
+          backgroundImage: 'url("/image/trans.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '600px',
@@ -43,22 +44,20 @@ const Transportation: React.FC = () => {
         </h1>
       </div>
 
-      {/* Transportation Content */}
-      <section
-        style={{
-          padding: '60px 40px',
-          backgroundColor: '#2c2c2c',
-          color: '#fff',
-          fontSize: '1.5rem',
-          lineHeight: '1.6',
-        }}
-      >
+      {/* Desktop View */}
+      <section className="desktop-only" style={{
+        padding: '60px 40px',
+        backgroundColor: '#2c2c2c',
+        color: '#fff',
+        fontSize: '1.5rem',
+        lineHeight: '1.6',
+      }}>
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>
           Revolutionizing Transportation Through AI and Smart Technologies
         </h2>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px' }}>
-          {/* Images Column */}
+          {/* Images */}
           <div style={{ flex: '1 1 40%' }}>
             {[
               'trans1.jpg',
@@ -68,7 +67,6 @@ const Transportation: React.FC = () => {
               'trans5.jpg',
               'trans6.jpg',
               'trans7.jpg'
-              
             ].map((src, index) => (
               <img
                 key={index}
@@ -83,7 +81,7 @@ const Transportation: React.FC = () => {
             ))}
           </div>
 
-          {/* Text Column */}
+          {/* Text */}
           <div style={{ flex: '1 1 55%' }}>
             <p style={{ fontSize: '2.2rem', lineHeight: '1.7' }}>
               Optimizing logistics, autonomous systems, and mobility experiences through intelligent analytics and smart infrastructure.
@@ -140,6 +138,41 @@ const Transportation: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Mobile View */}
+      <section className="mobile-only" style={{ backgroundColor: '#2c2c2c', color: '#fff', padding: '20px' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Revolutionizing Transportation</h2>
+
+        {["Optimizing logistics, autonomous systems, and mobility experiences through intelligent analytics and smart infrastructure.",
+          "The transportation industry is undergoing a transformative phase with the integration of cutting-edge technologies. These innovations are reshaping logistics, passenger services, and infrastructure management:",
+          "Several key trends are driving the evolution of transportation towards smarter, cleaner, and more connected systems:",
+          "To empower individuals and companies to thrive in this rapidly changing industry, Arinsa AI MINDS offers tailored educational programs:",
+          "The future of transportation promises exciting advances with AI at its core — from fully autonomous urban mobility to sustainable smart cities."]
+          .map((text, i) => (
+          <div className="box" key={i} style={{
+            background: '#3a3a3a',
+            borderRadius: '10px',
+            padding: '20px',
+            marginBottom: '20px',
+            fontSize: '1.1rem',
+            lineHeight: '1.6'
+          }}>
+            {text}
+          </div>
+        ))}
+      </section>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-only { display: none; }
+          .mobile-only { display: block; }
+        }
+
+        @media (min-width: 769px) {
+          .desktop-only { display: block; }
+          .mobile-only { display: none; }
+        }
+      `}</style>
     </div>
   );
 };

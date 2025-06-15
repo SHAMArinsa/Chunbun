@@ -13,6 +13,7 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const closeDropdown = () => {
     setActiveDropdown(null);
@@ -21,48 +22,43 @@ const Header = () => {
 
   const handleAuthClick = () => {
     closeDropdown();
+    setIsMobileMenuOpen(false);
     navigate('/my-arinsa');
   };
 
-  // ESC key to close
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeDropdown();
+      if (e.key === 'Escape') {
+        closeDropdown();
+        setIsMobileMenuOpen(false);
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Prevent scroll when dropdown open
   useEffect(() => {
-    document.body.style.overflow = activeDropdown ? 'hidden' : 'auto';
-  }, [activeDropdown]);
+    document.body.style.overflow = activeDropdown || isMobileMenuOpen ? 'hidden' : 'auto';
+  }, [activeDropdown, isMobileMenuOpen]);
 
-  // Delay fade-in effect
   useEffect(() => {
     if (activeDropdown) {
       setTimeout(() => setShowDropdown(true), 10);
     }
   }, [activeDropdown]);
 
-  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         closeDropdown();
       }
     };
     if (activeDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
     }
-    return () =>
-      document.removeEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [activeDropdown]);
 
-  // Close if mouse leaves dropdown area
   const handleMouseLeave = () => {
     if (!dropdownRef.current?.contains(document.activeElement)) {
       closeDropdown();
@@ -93,6 +89,7 @@ const Header = () => {
               style={{ height: '40px', objectFit: 'contain' }}
             />
           </Link>
+
           <nav style={{ display: 'flex', gap: '30px', fontSize: '16px', fontWeight: 500 }}>
             {[
               { label: 'Home', path: '/', hover: false },
@@ -126,30 +123,115 @@ const Header = () => {
           </nav>
         </div>
 
-        <button
-          onClick={handleAuthClick}
+        {/* Desktop Button */}
+        <div className="desktop-auth-btn">
+          <button
+            onClick={handleAuthClick}
+            style={{
+              backgroundColor: '#fff',
+              color: '#000',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '4px',
+              fontWeight: 600,
+              cursor: 'pointer',
+            }}
+          >
+            My ARINSA AI MINDS
+          </button>
+        </div>
+
+        {/* Hamburger Icon */}
+        <div
+          className="hamburger"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           style={{
-            backgroundColor: '#fff',
-            color: '#000',
-            border: 'none',
-            padding: '8px 16px',
-            borderRadius: '4px',
-            fontWeight: 600,
+            display: 'none',
+            fontSize: '24px',
             cursor: 'pointer',
+            color: '#fff',
           }}
         >
-          My ARINSA AI MINDS
-        </button>
+          ☰
+        </div>
       </header>
 
-      {/* Dropdown */}
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+        <div
+          className="mobile-nav"
+          style={{
+            backgroundColor: '#5f6f91',
+            padding: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px',
+            color: 'white',
+            width: '100vw',
+            maxWidth: '100vw',
+            boxSizing: 'border-box',
+            overflowX: 'hidden',
+          }}
+        >
+          {[
+            { label: 'Home', path: '/', hover: false },
+            { label: 'About Us', key: 'about' },
+            { label: 'Careers', key: 'careers' },
+            { label: 'Industries', key: 'industries' },
+            { label: 'Insights', key: 'insights' },
+            { label: 'Services', key: 'services' },
+            { label: 'Courses', key: 'courses' },
+          ].map((item) =>
+            item.path ? (
+              <Link
+                key={item.label}
+                to={item.path}
+                onClick={() => {
+                  closeDropdown();
+                  setIsMobileMenuOpen(false);
+                }}
+                style={{ color: 'white', textDecoration: 'none' }}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <span
+                key={item.label}
+                onClick={() => {
+                  setActiveDropdown(item.key!);
+                  setIsMobileMenuOpen(false);
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                {item.label}
+              </span>
+            )
+          )}
+          <button
+            onClick={handleAuthClick}
+            style={{
+              backgroundColor: '#fff',
+              color: '#000',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '4px',
+              fontWeight: 600,
+              cursor: 'pointer',
+            }}
+          >
+            My ARINSA AI MINDS
+          </button>
+        </div>
+      )}
+
+      {/* Dropdown Section */}
       {activeDropdown && (
         <div
           ref={dropdownRef}
           onMouseLeave={handleMouseLeave}
           style={{
             position: 'absolute',
-            top: '100px',
+            top: '120px', // increased gap between header and dropdown
             left: 10,
             right: 10,
             backgroundColor: 'rgba(0, 0, 0, 0.85)',
@@ -192,6 +274,35 @@ const Header = () => {
           </div>
         </div>
       )}
+
+      {/* Mobile Responsive Styles */}
+      <style>
+        {`
+          html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+          }
+
+          @media (max-width: 768px) {
+            nav {
+              display: none !important;
+            }
+            .hamburger {
+              display: block !important;
+            }
+            .desktop-auth-btn {
+              display: none !important;
+            }
+          }
+
+          @media (min-width: 769px) {
+            .mobile-nav {
+              display: none !important;
+            }
+          }
+        `}
+      </style>
     </>
   );
 };
