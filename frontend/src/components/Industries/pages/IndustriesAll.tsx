@@ -143,7 +143,7 @@ const IndustriesAll: React.FC = () => {
           Explore Industries with Us
         </h1>
         <button
-          onClick={() => (window.location.href = '/contact')}
+          onClick={() => navigate('/connect')}
           style={{
             padding: '6px 12px',
             fontSize: '0.95rem',
