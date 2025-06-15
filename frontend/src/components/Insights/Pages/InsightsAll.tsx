@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const InsightsAll: React.FC = () => {
   const { hash } = useLocation();
@@ -24,12 +24,12 @@ const InsightsAll: React.FC = () => {
           backgroundImage: 'url("/image/insights1.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: '600px',  // Adjust the height as needed
+          height: '600px',
           display: 'flex',
-          alignItems: 'center',  // Vertically center
-          justifyContent: 'flex-start',  // Align content to the left
-          textAlign: 'left',  // Left-align the text
-          padding: '0 40px', // Optional left padding to give space from the edge
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          textAlign: 'left',
+          padding: '0 40px',
           position: 'relative',
         }}
       >
@@ -47,7 +47,7 @@ const InsightsAll: React.FC = () => {
         >
           <h1
             style={{
-              fontSize: '3rem',  // Adjust the size as needed
+              fontSize: '3rem',
               color: '#fff',
               margin: 0,
               fontWeight: 'bold',
@@ -55,21 +55,23 @@ const InsightsAll: React.FC = () => {
           >
             Explore Insights
           </h1>
-          <button
-            onClick={() => window.location.href = '/connect'} // Adjust URL as needed
-            style={{
-              padding: '10px 20px',
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              color: '#fff',
-              backgroundColor:  '#5D758E',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-            }}
-          >
-            Contact Us
-          </button>
+
+          <Link to="/connect">
+            <button
+              style={{
+                padding: '10px 20px',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                color: '#fff',
+                backgroundColor: '#5D758E',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              Contact Us
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -86,24 +88,23 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>ARTIFICIAL INTELLIGENCE</h2>
-
         <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
-            <img
-              src="/image/insightsai.jpg"
-              alt="AI Illustration"
-              style={{ width: '100%', borderRadius: '8px' }}
-            />
+            <img src="/image/insightsai.jpg" alt="AI Illustration" style={{ width: '100%', borderRadius: '8px' }} />
           </div>
           <div style={{ flex: '1 1 50%' }}>
             <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}>
-              Artificial Intelligence (AI) is no longer a futuristic concept—it's a transformative force reshaping every industry. From intelligent automation to personalized customer experiences, AI is empowering organizations to unlock new efficiencies and make smarter decisions at unprecedented speed and scale.
-              <br />
-              <br />
-              Businesses are leveraging machine learning, computer vision, and natural language processing to streamline operations, detect patterns, and deliver predictive insights. Whether it's improving supply chains, optimizing risk management, or driving innovation, AI is at the heart of the digital revolution.
-              <br />
-              <br />
-              As adoption accelerates, it’s critical to embed ethical considerations and responsible AI frameworks to ensure trust, transparency, and fairness. Embracing AI is not just about adopting technology—it's about reimagining the future of work, value creation, and human potential.
+              Artificial Intelligence (AI) is no longer a futuristic concept—it's a transformative force reshaping every
+              industry. From intelligent automation to personalized customer experiences, AI is empowering organizations
+              to unlock new efficiencies and make smarter decisions at unprecedented speed and scale.
+              <br /><br />
+              Businesses are leveraging machine learning, computer vision, and natural language processing to streamline
+              operations, detect patterns, and deliver predictive insights. Whether it's improving supply chains,
+              optimizing risk management, or driving innovation, AI is at the heart of the digital revolution.
+              <br /><br />
+              As adoption accelerates, it’s critical to embed ethical considerations and responsible AI frameworks to
+              ensure trust, transparency, and fairness. Embracing AI is not just about adopting technology—it's about
+              reimagining the future of work, value creation, and human potential.
             </p>
           </div>
         </div>
@@ -121,21 +122,20 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>RISK</h2>
-
         <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
-            <img
-              src="/image/insightsrisk.jpg"
-              alt="Risk Illustration"
-              style={{ width: '100%', borderRadius: '8px' }}
-            />
+            <img src="/image/insightsrisk.jpg" alt="Risk Illustration" style={{ width: '100%', borderRadius: '8px' }} />
           </div>
           <div style={{ flex: '1 1 50%' }}>
             <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}>
-              In today’s volatile world, managing risk has become more complex than ever. From regulatory changes to cybersecurity threats, organizations must adopt robust strategies to safeguard their assets and reputation. By understanding potential risks and preparing for them, companies can mitigate their exposure and maintain operational resilience.
-              <br />
-              <br />
-              Risk management frameworks must evolve to account for rapidly changing environments. Integrating new technologies like AI can help predict risks more accurately and provide timely solutions to prevent business disruptions.
+              In today’s volatile world, managing risk has become more complex than ever. From regulatory changes to
+              cybersecurity threats, organizations must adopt robust strategies to safeguard their assets and reputation.
+              By understanding potential risks and preparing for them, companies can mitigate their exposure and maintain
+              operational resilience.
+              <br /><br />
+              Risk management frameworks must evolve to account for rapidly changing environments. Integrating new
+              technologies like AI can help predict risks more accurately and provide timely solutions to prevent
+              business disruptions.
             </p>
           </div>
         </div>
@@ -153,21 +153,19 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>TECHNOLOGY</h2>
-
         <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
-            <img
-              src="/image/insightstechnology.jpg"
-              alt="Technology Illustration"
-              style={{ width: '100%', borderRadius: '8px' }}
-            />
+            <img src="/image/insightstechnology.jpg" alt="Technology Illustration" style={{ width: '100%', borderRadius: '8px' }} />
           </div>
           <div style={{ flex: '1 1 50%' }}>
             <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}>
-              The future of business lies in embracing emerging technologies that drive innovation and competitive advantage. From cloud computing to blockchain, digital transformation is enabling businesses to enhance their operations, scale rapidly, and improve customer experiences.
-              <br />
-              <br />
-              Staying ahead of the curve means understanding how technology impacts every aspect of business. Companies need to invest in technology that not only solves problems but also anticipates future challenges and fosters long-term growth.
+              The future of business lies in embracing emerging technologies that drive innovation and competitive
+              advantage. From cloud computing to blockchain, digital transformation is enabling businesses to enhance
+              their operations, scale rapidly, and improve customer experiences.
+              <br /><br />
+              Staying ahead of the curve means understanding how technology impacts every aspect of business. Companies
+              need to invest in technology that not only solves problems but also anticipates future challenges and fosters
+              long-term growth.
             </p>
           </div>
         </div>
@@ -185,21 +183,19 @@ const InsightsAll: React.FC = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>TRANSFORMATION</h2>
-
         <div className="section-flex" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 40%' }}>
-            <img
-              src="/image/insightstransformation.jpg"
-              alt="Transformation Illustration"
-              style={{ width: '100%', borderRadius: '8px' }}
-            />
+            <img src="/image/insightstransformation.jpg" alt="Transformation Illustration" style={{ width: '100%', borderRadius: '8px' }} />
           </div>
           <div style={{ flex: '1 1 50%' }}>
             <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}>
-              Organizational transformation is about embracing change to thrive in an ever-evolving business landscape. Whether it’s through adopting new technologies, redefining business models, or reshaping culture, transformation is key to staying competitive in today’s fast-paced world.
-              <br />
-              <br />
-              Successful transformations require strong leadership, effective change management, and a focus on people. Aligning strategy, operations, and culture is crucial to ensuring that organizations remain agile and responsive to emerging opportunities and challenges.
+              Organizational transformation is about embracing change to thrive in an ever-evolving business landscape.
+              Whether it’s through adopting new technologies, redefining business models, or reshaping culture,
+              transformation is key to staying competitive in today’s fast-paced world.
+              <br /><br />
+              Successful transformations require strong leadership, effective change management, and a focus on people.
+              Aligning strategy, operations, and culture is crucial to ensuring that organizations remain agile and
+              responsive to emerging opportunities and challenges.
             </p>
           </div>
         </div>
