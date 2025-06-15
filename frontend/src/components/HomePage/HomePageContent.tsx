@@ -88,7 +88,7 @@ const HomePageContent: React.FC = () => {
                 maxWidth: '60%',
               }}
             >
-              <h1 style={{ fontSize: '2rem' }}>Welcome to ARINSA AI MINDS PVT LTD</h1>
+              <h1 style={{ fontSize: '2rem' }}>Welcome to ARINSA AI MINDS</h1>
               <p>
                 We specialize in delivering cutting-edge technologies and intelligent solutions powered by the latest
                 advancements in Artificial Intelligence.
@@ -104,14 +104,16 @@ const HomePageContent: React.FC = () => {
                 backgroundColor: '#5D758E',
                 color: '#fff',
                 textAlign: 'center',
+                lineHeight: '1.6', // ✅ improve readability
               }}
             >
-              <h1 style={{ fontSize: '1.5rem' }}>Welcome to ARINSA AI MINDS PVT LTD</h1>
+              <h1 style={{ fontSize: '1.2rem' }}>Welcome to ARINSA AI MINDS</h1>
               <p>
                 We specialize in delivering cutting-edge technologies and intelligent solutions powered by the latest
                 advancements in Artificial Intelligence.
               </p>
-              <p>Our mission is to build intelligent, scalable solutions that solve real-world problems and drive business growth.</p>
+              <p>Our mission is to build intelligent, scalable solutions that solve real-world problems and drive business growth.
+              </p>
             </div>
           )}
         </div>
@@ -240,6 +242,63 @@ const HomePageContent: React.FC = () => {
           ))}
         </div>
       </div>
+
+      
+      {/* Blinking Services CTA with Stylish Ribbon */}
+      <style>
+        {`
+          @keyframes blinker {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+          }
+        `}
+      </style>
+
+      <div
+        style={{
+          background: 'linear-gradient(135deg, #495A6F, #6B8198)',
+          padding: isMobile ? '2rem 1rem' : '3rem',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: '-50%',
+            width: '200%',
+            height: '100%',
+            background: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 10px, transparent 10px, transparent 20px)',
+            zIndex: 0,
+            pointerEvents: 'none',
+          }}
+        ></div>
+
+        <Link to="/services/details" style={{ textDecoration: 'none', zIndex: 2, position: 'relative', display: 'inline-block' }}>
+          <button
+            style={{
+              backgroundColor: '#5D758E',
+              color: '#fff',
+              fontWeight: 'bold',
+              fontSize: isMobile ? '0.9rem' : '1.1rem',
+              padding: isMobile ? '0.7rem 1.2rem' : '1rem 2rem',
+              borderRadius: '30px',
+              border: '2px solid #fff',
+              cursor: 'pointer',
+              animation: 'blinker 1.5s linear infinite',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+            }}
+          >
+           Please click here to know more about "OUR SERVICES"
+          </button>
+        </Link>
+      </div>
+
+
+
 
       <div
   style={{
