@@ -535,7 +535,7 @@ const HomePageContent: React.FC = () => {
       }
 
       .client-logo-marquee {
-        animation-duration: 25s;
+        animation-duration: 35s;
       }
     }
   `}</style>
