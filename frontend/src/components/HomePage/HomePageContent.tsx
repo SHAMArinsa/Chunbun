@@ -409,6 +409,139 @@ const HomePageContent: React.FC = () => {
   )}
 </div>
 
+      <div
+  style={{
+    backgroundColor: '#ffffff',
+    padding: '2rem 1rem',
+    overflow: 'hidden',
+    borderTop: '4px solid #1F3A93',       // Green top border
+    borderBottom: '4px solid #1F3A93',    // Green bottom border
+    marginTop: '3rem',
+    textAlign: 'center',
+  }}
+>
+  <h2
+    style={{
+      fontSize: '2rem',
+      fontWeight: 700,
+      marginBottom: '1.5rem',
+      color: '#2C3E50',
+    }}
+  >
+    Our Clients. Our Innovation. Our Impact.
+  </h2>
+
+  {/* Marquee Wrapper */}
+  <div className="client-marquee-wrapper">
+    <div className="client-logo-marquee">
+      {[
+        '/image/client1.jpeg',
+        '/image/client2.jpeg',
+        '/image/client3.jpeg',
+        '/image/client4.jpg',
+        '/image/client5.jpg',
+        '/image/client6.jpg',
+        '/image/client7.jpg',
+        '/image/client8.jpg',
+        '/image/client9.jpg',
+        '/image/client10.jpg',
+        '/image/client11.jpg',
+        '/image/client12.jpg',
+        '/image/client13.jpg',
+        '/image/client14.jpg',
+        '/image/client15.jpg',
+        '/image/client16.jpg',
+        '/image/client17.jpg',
+
+      ].map((logo, idx) => (
+        <img
+          key={idx}
+          src={logo}
+          alt={`Client ${idx + 1}`}
+          className="client-logo"
+          draggable={false}
+        />
+      ))}
+      {/* Duplicate logos for smooth loop */}
+      {[
+        '/image/client1.jpeg',
+        '/image/client2.jpeg',
+        '/image/client3.jpeg',
+        '/image/client4.jpg',
+        '/image/client5.jpg',
+        '/image/client6.jpg',
+        '/image/client7.jpg',
+        '/image/client8.jpg',
+        '/image/client9.jpg',
+        '/image/client10.jpg',
+        '/image/client11.jpg',
+        '/image/client12.jpg',
+        '/image/client13.jpg',
+        '/image/client14.jpg',
+        '/image/client15.jpg',
+        '/image/client16.jpg',
+        'image/client17.jpg',
+        
+      ].map((logo, idx) => (
+        <img
+          key={`duplicate-${idx}`}
+          src={logo}
+          alt={`Client duplicate ${idx + 1}`}
+          className="client-logo"
+          draggable={false}
+        />
+      ))}
+    </div>
+  </div>
+
+  {/* Styles */}
+  <style>{`
+    .client-marquee-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .client-logo-marquee {
+      display: flex;
+      width: fit-content;
+      animation: scrollLeft 40s linear infinite;
+    }
+
+    .client-logo {
+      height: 50px;
+      margin: 0 2rem;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 1.4rem !important;
+      }
+
+      .client-logo {
+        height: 40px;
+        margin: 0 1rem;
+      }
+
+      .client-logo-marquee {
+        animation-duration: 25s;
+      }
+    }
+  `}</style>
+</div>
+
+
       {/* Featured Case Studies */}
       <div style={{ backgroundColor: '#f8f9fa', padding: isMobile ? '2rem 1rem' : '2rem 2rem' }}>
         <h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '2rem' }}>Featured Case Studies</h2>
