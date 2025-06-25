@@ -10,6 +10,7 @@ import CareersPage from './components/Careers/CareersPage';
 import IndustriesPage from './components/Industries/IndustriesPage';
 import InsightsPage from './components/Insights/InsightsPage';
 import ServicesPage from './components/Services/ServicesPage';
+import ProductsPage from './components/Products/ProductsPage';
 import CoursesPage from './components/Courses/CoursesPage';
 import LegalAndPrivacy from './components/Footer/LegalAndPrivacy';
 
@@ -53,6 +54,9 @@ import CaseStudyAll from './components/AboutUs/Pages/case_study_all';
 // Services Pages
 import ServicesAll from './components/Services/Pages/ServicesAll';
 
+// Products Pages
+import ProductsAll from './components/Products/Pages/ProductsAll';
+
 
 // Course Pages
 import ComparativeExamPreparation from './components/Courses/Pages/ComparativeExamPreparation';
@@ -60,7 +64,11 @@ import InterviewPreparationCourse from './components/Courses/Pages/InterviewPrep
 import NormalCertificationCourses from './components/Courses/Pages/NormalCertificationCourses';
 import SpecialCourses from './components/Courses/Pages/SpecialCourses';
 import ExploreCourses from './components/Courses/Pages/ExploreCourses';
+import Internship from './components/Courses/Pages/internship';
 
+//internship
+import LongTermInternships from './components/Courses/Pages/Internship/LongTermInternships';
+import ShortTermInternships from './components/Courses/Pages/Internship/ShortTermInternships';
 
 //course spotlight
 import StudentTestimonials from './components/Courses/spotlight/StudentTestimonials';
@@ -160,6 +168,11 @@ function App() {
           <Route path="/services" element={<ServicesPage closeDropdown={() => {}} />} />
           <Route path="/services/details" element={<ServicesAll />} />
 
+          {/* Products */}
+          <Route path="/products" element={<ProductsPage closeDropdown={() => {}} />} />
+          <Route path="/products/details" element={<ProductsAll />} />
+
+
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage closeDropdown={() => {}} />} />
@@ -176,6 +189,12 @@ function App() {
           <Route path="/teach-with-us/add-your-course" element={<AddYourCourse />} />
           <Route path="/teach-with-us" element={<TeachWithUs />} />
           <Route path="/teach-with-us/recruitment" element={<RecruitmentFromUs />} />
+
+          {/* Internship Routes*/}
+          <Route path="/courses/internship" element={<Internship />} />
+          <Route path="/courses/internship/short-term" element={<ShortTermInternships />} />
+          <Route path="/courses/internship/long-term" element={<LongTermInternships />} />
+
 
           {/* Comparative Exam Preparation Routes */}
           <Route path="/courses/comparative-exam-preparation/jeemain" element={<JeeMain />} />
