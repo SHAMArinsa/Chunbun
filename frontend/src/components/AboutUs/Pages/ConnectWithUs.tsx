@@ -257,8 +257,15 @@ const ConnectWithUs: React.FC = () => {
             <option value="Project Collaboration (For other companies)">
               {isMobile ? 'Project Collaboration' : 'Project Collaboration (For other companies)'}
             </option>
-            <option value="Special Live AI Courses">Special Live AI Courses</option>
-            <option value="Internship enquiry">Internship enquiry</option>
+            <option value="Special Live AI Courses">
+              {isMobile ? 'Job Guarantee Course' : 'Job Guarantee Course enquiry'}
+            </option>
+            <option value="Internship enquiry short">
+              {isMobile ? 'Short Term Internships' : 'Short Term Internships enquiry '}
+            </option>
+            <option value="Internship enquiry long">
+              {isMobile ? 'Long Term Internships' : 'Long Term Internships enquiry '}
+            </option>
             <option value="Our product Services">Our product Services</option>
             <option value="Outsourcing">Outsourcing</option>
             <option value="Helping Startup">Helping Startup</option>
