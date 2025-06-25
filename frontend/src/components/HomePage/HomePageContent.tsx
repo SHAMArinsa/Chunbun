@@ -244,58 +244,104 @@ const HomePageContent: React.FC = () => {
       </div>
 
       
-      {/* Blinking Services CTA with Stylish Ribbon */}
-      <style>
-        {`
-          @keyframes blinker {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-          }
-        `}
-      </style>
+      {/* Blinking Services and Products CTA with Stylish Ribbon */}
+<style>
+  {`
+    @keyframes blinker {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  `}
+</style>
 
-      <div
+<div
+  style={{
+    background: 'linear-gradient(135deg, #495A6F, #6B8198)',
+    padding: isMobile ? '2rem 1rem' : '3rem',
+    textAlign: 'center',
+    position: 'relative',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: '-50%',
+      width: '200%',
+      height: '100%',
+      background:
+        'repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 10px, transparent 10px, transparent 20px)',
+      zIndex: 0,
+      pointerEvents: 'none',
+    }}
+  ></div>
+
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: isMobile ? 'column' : 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '2rem',
+      zIndex: 2,
+      position: 'relative',
+    }}
+  >
+    {/* Services CTA */}
+    <Link
+      to="/services/details"
+      style={{
+        textDecoration: 'none',
+        display: 'inline-block',
+      }}
+    >
+      <button
         style={{
-          background: 'linear-gradient(135deg, #495A6F, #6B8198)',
-          padding: isMobile ? '2rem 1rem' : '3rem',
-          textAlign: 'center',
-          position: 'relative',
-          overflow: 'hidden',
+          backgroundColor: '#5D758E',
+          color: '#fff',
+          fontWeight: 'bold',
+          fontSize: isMobile ? '0.9rem' : '1.1rem',
+          padding: isMobile ? '0.7rem 1.2rem' : '1rem 2rem',
+          borderRadius: '30px',
+          border: '2px solid #fff',
+          cursor: 'pointer',
+          animation: 'blinker 1.5s linear infinite',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: '-50%',
-            width: '200%',
-            height: '100%',
-            background: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 10px, transparent 10px, transparent 20px)',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }}
-        ></div>
+        Please click here to know more about "OUR SERVICES"
+      </button>
+    </Link>
 
-        <Link to="/services/details" style={{ textDecoration: 'none', zIndex: 2, position: 'relative', display: 'inline-block' }}>
-          <button
-            style={{
-              backgroundColor: '#5D758E',
-              color: '#fff',
-              fontWeight: 'bold',
-              fontSize: isMobile ? '0.9rem' : '1.1rem',
-              padding: isMobile ? '0.7rem 1.2rem' : '1rem 2rem',
-              borderRadius: '30px',
-              border: '2px solid #fff',
-              cursor: 'pointer',
-              animation: 'blinker 1.5s linear infinite',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
-            }}
-          >
-           Please click here to know more about "OUR SERVICES"
-          </button>
-        </Link>
-      </div>
+    {/* Products CTA */}
+    <Link
+      to="/products/details"
+      style={{
+        textDecoration: 'none',
+        display: 'inline-block',
+      }}
+    >
+      <button
+        style={{
+          backgroundColor: '#5D758E',
+          color: '#fff',
+          fontWeight: 'bold',
+          fontSize: isMobile ? '0.9rem' : '1.1rem',
+          padding: isMobile ? '0.7rem 1.2rem' : '1rem 2rem',
+          borderRadius: '30px',
+          border: '2px solid #fff',
+          cursor: 'pointer',
+          animation: 'blinker 1.5s linear infinite',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+        }}
+      >
+        Please click here to explore our "PRODUCTS"
+      </button>
+    </Link>
+  </div>
+</div>
 
 
 
@@ -372,25 +418,28 @@ const HomePageContent: React.FC = () => {
   )}
 
   {/* PC: Contact Section on the right */}
-  {!isMobile && (
-    <div
-      style={{
-        flex: 1,
-        width: '100%',
-        backgroundColor: '#f5f5f5',
-        padding: '2rem',
-        borderRadius: '12px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        textAlign: 'left',
-      }}
-    >
-      <h3 style={{ marginBottom: '1rem', fontSize: '1.5rem', color: '#333' }}>
-        Contact Us 
-      </h3>
-      <p style={{ marginBottom: '1rem', fontSize: '1rem', color: '#555' }}>
-        Want to join our company? Start by learning from our exclusive live training and placement courses at Arinsa AI Minds — join our courses today, reach us and only select the "SPECIAL LIVE AI COURSES" option from the below.
-      </p>
-      <Link to="/connect">
+{!isMobile && (
+  <div
+    style={{
+      flex: 1,
+      width: '100%',
+      backgroundColor: '#f5f5f5',
+      padding: '2rem',
+      borderRadius: '12px',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+      textAlign: 'left',
+    }}
+  >
+    <h3 style={{ marginBottom: '1rem', fontSize: '1.5rem', color: '#333' }}>
+      Contact Us 
+    </h3>
+    <p style={{ marginBottom: '1.5rem', fontSize: '1rem', color: '#555' }}>
+      Want to join our company? Begin your journey with ARINSA AI MINDS through our exclusive Job Guarantee Course and Long-Term Internship Program. Enroll today by selecting one of the options from the buttons below to get started.
+    </p>
+
+    {/* Button Links */}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <Link to="/courses/special-course" style={{ textDecoration: 'none' }}>
         <button
           style={{
             backgroundColor: '#5D758E',
@@ -400,13 +449,35 @@ const HomePageContent: React.FC = () => {
             borderRadius: '5px',
             cursor: 'pointer',
             fontSize: '1rem',
+            width: '100%',
+            textAlign: 'center',
           }}
         >
-          Get in Touch
+          Our Job Guarantee Program
+        </button>
+      </Link>
+
+      <Link to="/courses/internship" style={{ textDecoration: 'none' }}>
+        <button
+          style={{
+            backgroundColor: '#5D758E',
+            color: '#fff',
+            border: 'none',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            width: '100%',
+            textAlign: 'center',
+          }}
+        >
+          Our Internship Program
         </button>
       </Link>
     </div>
-  )}
+  </div>
+)}
+
 </div>
 
       <div
