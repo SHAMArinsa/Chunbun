@@ -20,7 +20,7 @@ const Footer = () => {
         {/* Social Links */}
         <div className="footer-social" style={{ display: 'flex', gap: '15px' }}>
           <a
-            href="https://www.linkedin.com/company/ans-ai-minds/"
+            href="https://www.linkedin.com/company/arinsaaiminds/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: '#ccc', textDecoration: 'none' }}
