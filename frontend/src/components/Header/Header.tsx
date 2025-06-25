@@ -6,6 +6,7 @@ import CareersPage from '../Careers/CareersPage';
 import IndustriesPage from '../Industries/IndustriesPage';
 import InsightsPage from '../Insights/InsightsPage';
 import ServicesPage from '../Services/ServicesPage';
+import ProductsPage from '../Products/ProductsPage';
 import CoursesPage from '../Courses/CoursesPage';
 
 const Header = () => {
@@ -98,6 +99,7 @@ const Header = () => {
               { label: 'Industries', key: 'industries' },
               { label: 'Insights', key: 'insights' },
               { label: 'Services', key: 'services' },
+              { label: 'Products', key: 'products' },
               { label: 'Courses', key: 'courses' },
             ].map((item) =>
               item.path ? (
@@ -180,6 +182,7 @@ const Header = () => {
             { label: 'Industries', key: 'industries' },
             { label: 'Insights', key: 'insights' },
             { label: 'Services', key: 'services' },
+            { label: 'Products', key: 'products' },
             { label: 'Courses', key: 'courses' },
           ].map((item) =>
             item.path ? (
@@ -270,6 +273,7 @@ const Header = () => {
             {activeDropdown === 'industries' && <IndustriesPage closeDropdown={closeDropdown} />}
             {activeDropdown === 'insights' && <InsightsPage closeDropdown={closeDropdown} />}
             {activeDropdown === 'services' && <ServicesPage closeDropdown={closeDropdown} />}
+            {activeDropdown === 'products' && <ProductsPage closeDropdown={closeDropdown} />}
             {activeDropdown === 'courses' && <CoursesPage closeDropdown={closeDropdown} />}
           </div>
         </div>
