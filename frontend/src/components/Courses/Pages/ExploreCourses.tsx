@@ -19,6 +19,14 @@ const ExploreCourses: React.FC = () => {
 
   const courses = [
     {
+      label: 'Internships',
+      path: '/courses/internship',
+      image: '/image/internship-banner.jpg', // Replace with actual image path
+      description:
+        'Gain hands-on experience in AI, full stack, UI/UX, and GenAI development with our short and long-term internship programs.',
+      external: false,
+    },
+    {
       label: 'Comparative Exam Preparation',
       path: '/courses/comparative-exam-preparation',
       image: '/image/ComparativeExam.jpg',
@@ -43,7 +51,7 @@ const ExploreCourses: React.FC = () => {
       external: false,
     },
     {
-      label: 'Special Courses',
+      label: 'Job Guarantee Course',
       path: '/courses/special-course',
       image: '/image/special-banner.jpg',
       description:
