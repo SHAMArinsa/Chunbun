@@ -166,7 +166,7 @@ const HomePageContent: React.FC = () => {
         videoSrc: '/videos/About_service1.mp4',
       },
       {
-        title: 'Full Stack Web Development',
+        title: 'Full Stack Web & Mobile Development',
         description:
           'End-to-End + Full Stack Web Development (React, Node.js, FastAPI, Flask, Django, HTML, CSS, JavaScript)',
         videoSrc: '/videos/About_service2.mp4',
