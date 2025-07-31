@@ -141,107 +141,122 @@ const HomePageContent: React.FC = () => {
           We’re building a smarter future where organizations thrive using the power of artificial intelligence.
         </p>
       </div>
+{/* Our Services Section */}
+<div style={{ padding: isMobile ? '2rem 1rem' : '3rem 1rem', backgroundColor: '#fffaf0' }}>
+  <h2 style={{ textAlign: 'center', fontSize: isMobile ? '2rem' : '2.5rem', marginBottom: '2rem' }}>
+    Our Services
+  </h2>
 
-      {/* Our Services Section */}
-      <div style={{ padding: isMobile ? '2rem 1rem' : '3rem 1rem', backgroundColor: '#fffaf0' }}>
-        <h2 style={{ textAlign: 'center', fontSize: isMobile ? '2rem' : '2.5rem', marginBottom: '2rem' }}>Our Services</h2>
-
-        <div
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+      gap: '2rem',
+      maxWidth: '1600px',
+      margin: '0 auto',
+      fontSize: '1.1rem',
+      color: '#333',
+    }}
+  >
+    {[
+      {
+        title: 'Generative AI & Agentic AI',
+        description:
+          'Custom Generative AI (Text, Code, Image, Audio) + Agentic AI for Business Automation & Intelligent Customer Interaction',
+        videoSrc: '/videos/About_service1.mp4',
+      },
+      {
+        title: 'Full Stack Web Development',
+        description:
+          'End-to-End + Full Stack Web Development (React, Node.js, FastAPI, Flask, Django, HTML, CSS, JavaScript)',
+        videoSrc: '/videos/About_service2.mp4',
+      },
+      {
+        title: 'ML, DL, NLP & CV',
+        description:
+          'Machine Learning, Deep Learning, NLP (Chatbots, Document AI, Sentiment Analysis), Computer Vision (Detection, Segmentation, OCR)',
+        videoSrc: '/videos/MLDL.mp4',
+      },
+      {
+        title: 'Data Engineering',
+        description: 'End-to-End Data Engineering Pipelines + SQL + NoSQL',
+        videoSrc: '/videos/Data Engineering.mp4',
+      },
+      {
+        title: 'AI SaaS + Automation + Hyper automation',
+        description:
+          'End-to-end AI SaaS product development, intelligent workflow automation, and hyperautomation solutions empowering businesses with custom AI tools, optimized processes, and strategic AI deployment.',
+        videoSrc: '/videos/Saas.mp4',
+      },
+      {
+        title: 'Predictive Analytics & Visualization',
+        description:
+          'Predictive Analytics, Forecasting, Data Analysis, Data Visualization (Power BI, Tableau)',
+        videoSrc: '/videos/Predictive Analytics.mp4',
+      },
+      {
+        title: '24×7 App, Web & Mobile Support',
+        description:
+          'Round-the-clock support and maintenance for your apps, websites, and mobile platforms to ensure uninterrupted service, performance optimization, and rapid issue resolution.',
+        videoSrc: '/videos/Support_Maintenance.mp4',
+      },
+    ].map((service, idx) => (
+      <div
+        key={idx}
+        style={{
+          backgroundColor: '#fff',
+          padding: '1.5rem',
+          borderRadius: '10px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          textAlign: 'center',
+          ...(idx === 6 && !isMobile
+            ? {
+                gridColumn: '1 / span 2',
+                justifySelf: 'center',
+                maxWidth: '50%',
+              }
+            : {}),
+        }}
+      >
+        <div style={{ position: 'relative', paddingTop: '56.25%', marginBottom: '1rem' }}>
+          <video
+            src={service.videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: '10px',
+            }}
+          />
+        </div>
+        <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>{service.title}</h3>
+        <p>{service.description}</p>
+        <Link
+          to="/connect"
           style={{
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-            gap: '2rem',
-            maxWidth: '1600px',
-            margin: '0 auto',
-            fontSize: '1.1rem',
-            color: '#333',
+            marginTop: '1rem',
+            display: 'inline-block',
+            padding: '0.6rem 1.5rem',
+            backgroundColor: '#5D758E',
+            color: '#fff',
+            textDecoration: 'none',
+            borderRadius: '6px',
+            fontWeight: 'bold',
           }}
         >
-          {[
-            {
-              title: 'Generative AI & Agentic AI',
-              description:
-                'Custom Generative AI (Text, Code, Image, Audio) + Agentic AI for Business Automation & Intelligent Customer Interaction',
-              videoSrc: '/videos/About_service1.mp4',
-            },
-            {
-              title: 'Full Stack Web Development',
-              description:
-                'End-to-End + Full Stack Web Development (React, Node.js, FastAPI, Flask, Django, HTML, CSS, JavaScript)',
-              videoSrc: '/videos/About_service2.mp4',
-            },
-            {
-              title: 'ML, DL, NLP & CV',
-              description:
-                'Machine Learning, Deep Learning, NLP (Chatbots, Document AI, Sentiment Analysis), Computer Vision (Detection, Segmentation, OCR)',
-              videoSrc: '/videos/MLDL.mp4',
-            },
-            {
-              title: 'AI SaaS + Automation + Hyper automation',
-              description:
-                'End-to-end AI SaaS product development, intelligent workflow automation, and hyperautomation solutions empowering businesses with custom AI tools, optimized processes, and strategic AI deployment.',
-              videoSrc: '/videos/Saas.mp4',
-            },
-            {
-              title: 'Predictive Analytics & Visualization',
-              description: 'Predictive Analytics, Forecasting, Data Analysis, Data Visualization (Power BI, Tableau)',
-              videoSrc: '/videos/Predictive Analytics.mp4',
-            },
-            {
-              title: 'Data Engineering',
-              description: 'End-to-End Data Engineering Pipelines + SQL + NoSQL',
-              videoSrc: '/videos/Data Engineering.mp4',
-            },
-          ].map((service, idx) => (
-            <div
-              key={idx}
-              style={{
-                backgroundColor: '#fff',
-                padding: '1.5rem',
-                borderRadius: '10px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                textAlign: 'center',
-              }}
-            >
-              <div style={{ position: 'relative', paddingTop: '56.25%', marginBottom: '1rem' }}>
-                <video
-                  src={service.videoSrc}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '10px',
-                  }}
-                />
-              </div>
-              <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>{service.title}</h3>
-              <p>{service.description}</p>
-              <Link
-                to="/connect"
-                style={{
-                  marginTop: '1rem',
-                  display: 'inline-block',
-                  padding: '0.6rem 1.5rem',
-                  backgroundColor: '#5D758E',
-                  color: '#fff',
-                  textDecoration: 'none',
-                  borderRadius: '6px',
-                  fontWeight: 'bold',
-                  }}
-                >
-                  Contact Us
-              </Link>
-            </div>
-          ))}
-        </div>
+          Contact Us
+        </Link>
       </div>
+    ))}
+  </div>
+</div>
 
       
       {/* Blinking Services and Products CTA with Stylish Ribbon */}
