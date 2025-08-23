@@ -1,0 +1,82 @@
+// src/components/Industries/Pages/IndustriesAll.tsx
+
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const IndustriesAll: React.FC = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [hash]);
+
+  return (
+    <div style={{ padding: '40px', backgroundColor: '#f9f9f9', color: '#333' }}>
+      <section id="advanced-manufacturing" style={{ marginBottom: '60px' }}>
+        <h2>Advanced Manufacturing</h2>
+        <p>
+          Explore how innovative technologies, automation, and supply chain optimization are transforming advanced manufacturing industries worldwide.
+        </p>
+      </section>
+
+      <section id="consumer" style={{ marginBottom: '60px' }}>
+        <h2>Consumer</h2>
+        <p>
+          Understand how shifting consumer behavior and digital disruption are reshaping the retail, consumer products, and e-commerce sectors.
+        </p>
+      </section>
+
+      <section id="energy-resources" style={{ marginBottom: '60px' }}>
+        <h2>Energy & Resources</h2>
+        <p>
+          Dive into the latest trends in sustainability, decarbonization, and the energy transition impacting the global energy and resources market.
+        </p>
+      </section>
+
+      <section id="financial-services" style={{ marginBottom: '60px' }}>
+        <h2>Financial Services</h2>
+        <p>
+          Learn how fintech, regulatory changes, and customer expectations are driving innovation in banking, insurance, and asset management.
+        </p>
+      </section>
+
+      <section id="government-public" style={{ marginBottom: '60px' }}>
+        <h2>Government & Public</h2>
+        <p>
+          Discover strategies for modernizing public services, improving citizen engagement, and enabling digital transformation in government.
+        </p>
+      </section>
+
+      <section id="health" style={{ marginBottom: '60px' }}>
+        <h2>Health</h2>
+        <p>
+          Examine how healthcare providers, payers, and life sciences companies are embracing technology to deliver better patient outcomes.
+        </p>
+      </section>
+
+      <section id="private-equity" style={{ marginBottom: '60px' }}>
+        <h2>Private Equity</h2>
+        <p>
+          Understand the evolving landscape of private capital, investment strategies, and value creation in portfolio companies.
+        </p>
+      </section>
+
+      <section id="technology-media" style={{ marginBottom: '60px' }}>
+        <h2>Technology, Media & Telecom</h2>
+        <p>
+          Stay ahead with insights on innovation, digital platforms, content consumption, and connectivity in a converging TMT sector.
+        </p>
+      </section>
+    </div>
+  );
+};
+
+export default IndustriesAll;
