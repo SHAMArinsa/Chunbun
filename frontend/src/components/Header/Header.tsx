@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; 
 import logo from '../../assets/logo.png';
 import { useState, useEffect, useRef } from 'react';
 import AboutUsPage from '../AboutUs/AboutUsPage';
@@ -87,7 +87,14 @@ const Header = () => {
             <img
               src={logo}
               alt="Company Logo"
-              style={{ height: '50px', objectFit: 'contain' }}
+              style={{
+                height: '90px',
+                width: '90px',
+                borderRadius: '50%',
+                border: '2px solid #fff',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
+                objectFit: 'cover',
+              }}
             />
           </Link>
 
@@ -301,7 +308,6 @@ const Header = () => {
             .desktop-auth-btn {
               display: none !important;
             }
-            /* ✅ Fix alignment issue: force both Links and Spans same block style */
             .mobile-nav a,
             .mobile-nav span {
               display: block !important;
