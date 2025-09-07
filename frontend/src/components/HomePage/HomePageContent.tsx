@@ -355,6 +355,35 @@ const HomePageContent: React.FC = () => {
         Please click here to explore our "PRODUCTS"
       </button>
     </Link>
+
+{/* Portfolio CTA (External Link) */}
+    <a
+      href="https://arinsa-port1.vercel.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        textDecoration: 'none',
+        display: 'inline-block',
+      }}
+    >
+      <button
+        style={{
+          backgroundColor: '#493c56ff',
+          color: '#fff',
+          fontWeight: 'bold',
+          fontSize: isMobile ? '0.9rem' : '1.1rem',
+          padding: isMobile ? '0.7rem 1.2rem' : '1rem 2rem',
+          borderRadius: '30px',
+          border: '2px solid #fff',
+          cursor: 'pointer',
+          animation: 'blinker 1.5s linear infinite',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+        }}
+      >
+        View some showcased projects in our "PORTFOLIO"
+      </button>
+    </a>
+  
   </div>
 </div>
 
@@ -784,3 +813,4 @@ const HomePageContent: React.FC = () => {
 };
 
 export default HomePageContent;
+
