@@ -84,16 +84,14 @@ const Header = () => {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '60px' }}>
           <Link to="/" onClick={closeDropdown}>
-            <img
+          <img
   src={logo}
   alt="Company Logo"
   style={{
-    height: '90px',
-    width: '90px',
-    borderRadius: '50%',   // ❌ makes it circular
-    border: '2px solid #fff', // ❌ ring
-    boxShadow: '0 4px 8px rgba(0,0,0,0.3)', // ❌ glow/ring feel
-    objectFit: 'cover',
+    height: '48px',
+    width: 'auto',
+    objectFit: 'contain',
+    display: 'block',
   }}
 />
 
