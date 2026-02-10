@@ -88,13 +88,14 @@ const Header = () => {
   src={logo}
   alt="Company Logo"
   style={{
-    height: '48px',
-    width: '48px',            // 👈 make width same as height
-    objectFit: 'cover',       // 👈 important for circular crop
-    borderRadius: '50%',      // 👈 makes it round
-    border: '2px solid #fff', // optional (matches your example)
-    boxShadow: '0 4px 10px rgba(0,0,0,0.25)', // optional
+    height: '112px',          // 👈 same as w-28 h-28
+    width: '112px',
+    objectFit: 'cover',
+    borderRadius: '50%',
+    border: '2px solid #fff',
+    boxShadow: '0 8px 20px rgba(0,0,0,0.35)',
     display: 'block',
+    backgroundColor: '#fff', // optional safety for transparent logos
   }}
 />
 
