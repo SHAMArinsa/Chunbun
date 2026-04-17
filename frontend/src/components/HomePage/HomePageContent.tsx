@@ -12,6 +12,7 @@ const buttonStyle: React.CSSProperties = {
   fontSize: '1rem',
 };
 
+
 const smallButtonStyle: React.CSSProperties = {
   padding: '0.3rem 0.6rem',
   fontSize: '0.8rem',
@@ -32,6 +33,77 @@ const HomePageContent: React.FC = () => {
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
+    const [reviewIndex, setReviewIndex] = useState<number>(0);
+  const [pauseReview, setPauseReview] = useState<boolean>(false);
+
+
+  // ✅ ADD HERE ↓↓↓
+
+  type Review = {
+    name: string;
+    role: string;
+    image: string;
+    rating: number;
+    text: string;
+  };
+
+  const reviews: Review[] = [
+    
+
+    {
+  name: "Helen Selby",
+  role: "General Counsel & Company Secretary, ASDA",
+  image: "/image/review_asda.jpg",
+  rating: 5,
+  text: "Arinsa AI Minds helped us implement an AI-driven churn prediction platform that transformed how we engage with our customers. Their solution enabled proactive retention strategies, improved customer loyalty, and provided real-time insights that strengthened our decision-making and long-term value creation."
+},
+      {
+  name: "Ashutosh Lawania",
+  role: "Founder, mFine",
+  image: "/image/review_mfine.jpg",
+  rating: 5,
+  text: "Arinsa AI Minds helped us build a scalable AI-powered healthcare platform delivering seamless consultations, health tracking, and personalized insights to millions."
+},
+{
+  name: "Tom Adams",
+  role: "Chief Technology Officer, Adyen",
+  image: "/image/review_adyen.jpg",
+  rating: 5,
+  text: "Arinsa AI Minds helped us enhance our payment infrastructure with scalable, AI-driven solutions. Their expertise in building high-performance systems enabled us to optimize transaction processing, improve reliability, and deliver seamless payment experiences for global merchants at scale."
+},
+    
+      {
+  name: "Kevin Sun",
+  role: "Co-Founder / CTO, NexusMD",
+  image: "/image/review_nexus.jpg",
+  rating: 5,
+  text: "Partnering with Arinsa AI Minds enabled us to deploy advanced AI agents that transformed clinical workflows at Peninsula Private Hospital. Their solution boosted ED throughput, reduced administrative burden, and ensured compliance—allowing clinicians to focus more on patient care while improving overall operational efficiency."
+    },
+
+    {
+  name: "Ruslan Kogan",
+  role: "Founder & CEO, Kogan.com",
+  image: "/image/review_kogan.jpg",
+  rating: 5,
+  text: "Arinsa AI Minds helped us build a scalable and high-performing e-commerce platform capable of handling millions of users. Their expertise in AI-driven personalization, performance optimization, and secure integrations significantly enhanced customer experience, engagement, and overall business growth."
+},
+    {
+  name: "Team Manjee",
+  role: "Team, Manje Health",
+  image: "/image/review_Manjee.jpg",
+  rating: 5,
+  text: "Arinsa AI Minds helped us build a secure and scalable digital healthcare platform that enables seamless cross-border funding and access to trusted hospitals and insurance providers. Their expertise ensured a smooth user experience while delivering real social impact across Africa."
+},
+
+{
+  name: "Jad Antoun",
+  role: "Founder, Huspy",
+  image: "/image/review_huspy.jpg",
+  rating: 5,
+  text: "Arinsa AI Minds helped us build a scalable AI-powered real estate platform that streamlined property discovery, mortgage processes, and enhanced user experience."
+}
+  ];
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -47,6 +119,16 @@ const HomePageContent: React.FC = () => {
     }, 4000); // Change slide every 4 seconds
     return () => clearInterval(interval);
   }, [sliderImages.length]);
+
+  useEffect(() => {
+  if (pauseReview) return;
+
+  const interval = setInterval((): void => {
+    setReviewIndex((prev: number) => (prev + 1) % reviews.length);
+  }, 3000);
+
+  return (): void => clearInterval(interval);
+}, [pauseReview, reviews.length]);
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' }}>
@@ -656,6 +738,115 @@ const HomePageContent: React.FC = () => {
   `}</style>
 </div>
 
+{/* ===== REVIEW SECTION ===== */}
+<div
+  style={{
+    backgroundColor: "#f9f9fb",
+    padding: "2rem 1rem",
+    textAlign: "center"
+  }}
+>
+  <h2
+    style={{
+      fontSize: "clamp(1.4rem, 4vw, 2rem)", // ✅ responsive font
+      fontWeight: 700,
+      marginBottom: "1.5rem",
+      color: "#493c56ff"
+    }}
+  >
+    What Our Clients Say
+  </h2>
+
+  <div
+    style={{
+      position: "relative",
+      maxWidth: "600px",
+      margin: "auto",
+      minHeight: "260px", // ✅ flexible instead of fixed
+      padding: "0 10px"
+    }}
+    onMouseEnter={(): void => setPauseReview(true)}
+    onMouseLeave={(): void => setPauseReview(false)}
+  >
+    {reviews.map((review: Review, index: number) => (
+      <div
+        key={index}
+        style={{
+          position: index === reviewIndex ? "relative" : "absolute",
+          opacity: index === reviewIndex ? 1 : 0,
+          transform: index === reviewIndex ? "translateX(0)" : "translateX(30px)",
+          transition: "all 0.5s ease",
+          padding: "1rem",
+          background: "#fff",
+          borderRadius: "12px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+        }}
+      >
+        <img
+          src={review.image}
+          alt={review.name}
+          style={{
+            width: "60px",
+            height: "60px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            marginBottom: "0.8rem"
+          }}
+        />
+
+        <h4 style={{ marginBottom: "4px", fontSize: "1rem" }}>
+          {review.name}
+        </h4>
+
+        {review.role && (
+          <p
+            style={{
+              fontSize: "0.8rem",
+              color: "#777",
+              marginBottom: "6px"
+            }}
+          >
+            {review.role}
+          </p>
+        )}
+
+        <div style={{ color: "#f5a623", marginBottom: "0.5rem", fontSize: "0.9rem" }}>
+          {"★".repeat(review.rating)}
+          {"☆".repeat(5 - review.rating)}
+        </div>
+
+        <p
+          style={{
+            color: "#555",
+            fontSize: "0.9rem",
+            lineHeight: "1.5"
+          }}
+        >
+          {review.text}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* Dots */}
+  <div style={{ marginTop: "1rem" }}>
+    {reviews.map((_, i: number) => (
+      <span
+        key={i}
+        onClick={(): void => setReviewIndex(i)}
+        style={{
+          width: 8,
+          height: 8,
+          margin: 4,
+          borderRadius: "50%",
+          display: "inline-block",
+          background: i === reviewIndex ? "#493c56ff" : "#ccc",
+          cursor: "pointer"
+        }}
+      />
+    ))}
+  </div>
+</div>
 
       {/* Featured Case Studies */}
       <div style={{ backgroundColor: '#f8f9fa', padding: isMobile ? '2rem 1rem' : '2rem 2rem' }}>
