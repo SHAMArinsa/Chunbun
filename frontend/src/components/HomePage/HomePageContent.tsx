@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Helmet } from "react-helmet-async";
+<>
+  <Helmet>
+    <title>Arinsa AI Minds | Generative AI & Automation Company</title>
+    <meta 
+      name="description" 
+      content="Arinsa AI Minds builds AI automation, NLP, and LLM-powered solutions for businesses worldwide." 
+    />
+  </Helmet>
+
+
 const buttonStyle: React.CSSProperties = {
   marginTop: '0.5rem',
   padding: '0.75rem 1rem',
