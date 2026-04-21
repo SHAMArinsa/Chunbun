@@ -110,6 +110,23 @@ const ServicesAll: React.FC = () => {
         />
       </Helmet>
       {/* 🔥 SEO END */}
+
+      
+{/* ✅ FAQ START */}
+<div style={{ padding: '40px' }}>
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>What AI services does Arinsa AI Minds provide?</h3>
+  <p>
+    We offer AI automation, Generative AI, NLP, and LLM-based solutions.
+  </p>
+
+  <h3>Do you build custom AI solutions?</h3>
+  <p>
+    Yes, we build scalable AI systems tailored to business needs.
+  </p>
+</div>
+{/* ✅ FAQ END */}
     <div>
       <div
         style={{
