@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; // ✅ Import useNavigate
+import { Helmet } from "react-helmet-async";
 
 const ServicesAll: React.FC = () => {
   const { hash } = useLocation();
@@ -88,6 +89,27 @@ const ServicesAll: React.FC = () => {
   ];
 
   return (
+    <>
+      {/* 🔥 SEO START */}
+      <Helmet>
+        <title>AI Services & Solutions | Arinsa AI Minds</title>
+
+        <meta
+          name="description"
+          content="Arinsa AI Minds offers AI automation, Generative AI, cloud services, and managed IT solutions to help businesses scale."
+        />
+
+        <meta
+          name="keywords"
+          content="AI services, AI automation, generative AI, NLP, LLM, cloud services, IT solutions"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.arinsaaiminds.com/services/details"
+        />
+      </Helmet>
+      {/* 🔥 SEO END */}
     <div>
       <div
         style={{
@@ -226,6 +248,7 @@ const ServicesAll: React.FC = () => {
         `}
       </style>
     </div>
+    </>
   );
 };
 
