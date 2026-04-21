@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet-async";
 
 const IndustriesAll: React.FC = () => {
   const { hash } = useLocation();
@@ -105,6 +106,26 @@ const IndustriesAll: React.FC = () => {
   };
 
   return (
+
+    <>
+    <Helmet>
+      <title>AI Solutions by Industry | Arinsa AI Minds</title>
+
+      <meta
+        name="description"
+        content="Discover AI solutions tailored for industries like healthcare, manufacturing, education, and finance by Arinsa AI Minds."
+      />
+
+      <meta
+        name="keywords"
+        content="AI solutions by industry, AI healthcare, AI manufacturing, AI education, AI automation industries"
+      />
+
+      <link
+        rel="canonical"
+        href="https://www.arinsaaiminds.com/industries/details"
+      />
+    </Helmet>
   <div>
     {/* Industries Banner Styled Like Insights */}
     <div
@@ -308,6 +329,7 @@ const IndustriesAll: React.FC = () => {
         `}
       </style>
     </div>
+    </>
   );
 };
 
