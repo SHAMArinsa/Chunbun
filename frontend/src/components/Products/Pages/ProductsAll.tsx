@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet-async";
 
 const ProductsAll: React.FC = () => {
   const { hash } = useLocation();
@@ -403,6 +404,25 @@ const ProductsAll: React.FC = () => {
   ];
 
   return (
+    <>
+    <Helmet>
+      <title>AI Products & Solutions | Arinsa AI Minds</title>
+
+      <meta
+        name="description"
+        content="Explore AI products like AutoDocQuery, InstaCoder, SummarizerPro, and Arinsa Multi Agent built by Arinsa AI Minds to automate business workflows."
+      />
+
+      <meta
+        name="keywords"
+        content="AI products, generative AI tools, AI automation tools, NLP tools, AI SaaS products"
+      />
+
+      <link
+        rel="canonical"
+        href="https://www.arinsaaiminds.com/products/details"
+      />
+    </Helmet>
     <div>
       <div
         style={{
@@ -543,6 +563,7 @@ const ProductsAll: React.FC = () => {
         `}
       </style>
     </div>
+    </>
   );
 };
 
