@@ -35,7 +35,7 @@ export default function ContactFormSection() {
       setLoading(true);
 
       const response = await fetch(
-  "https://www.arinsaaiminds.com/api/contact",
+  "VITE_API_URL=https://chunbun-6eat.onrender.com",
         {
           method: "POST",
           headers: {
