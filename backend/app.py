@@ -14,9 +14,19 @@ load_dotenv()
 
 app = FastAPI()
 
+# CORS configuration
+origins = [
+    "https://www.arinsaaiminds.com",
+    "https://arinsaaiminds.com",
+    "https://api.arinsaaiminds.com",
+    "https://website-gilt-three-95.vercel.app",
+    "https://website-arinsa-ai-minds.vercel.app"
+]
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
