@@ -10,23 +10,23 @@ import traceback
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+# Load environment variables
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(
+    title="ARINSA AI MINDS API",
+    version="1.0.0"
+)
 
-# CORS configuration
-origins = [
-    "https://www.arinsaaiminds.com",
-    "https://arinsaaiminds.com",
-    "https://api.arinsaaiminds.com",
-    "https://website-gilt-three-95.vercel.app",
-    "https://website-arinsa-ai-minds.vercel.app"
-]
-
-
+# CORS Configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://arinsaaiminds.vercel.app",
+        "https://arinsaaiminds.com",
+        "https://www.arinsaaiminds.com",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -43,27 +43,30 @@ class ContactForm(BaseModel):
 
 @app.get("/")
 def home():
-    return {"status": "running"}
+    return {
+        "status": "running",
+        "service": "ARINSA AI MINDS Backend",
+        "version": "1.0.0"
+    }
+
+
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy"
+    }
 
 
 @app.post("/contact")
 async def contact(form: ContactForm):
 
     try:
-        print("\n========== NEW CONTACT REQUEST ==========")
-        print("Name:", form.name)
-        print("Email:", form.email)
-        print("Phone:", form.phone)
-        print("Company:", form.company)
 
         smtp_email = os.getenv("SMTP_EMAIL")
         smtp_password = os.getenv("SMTP_PASSWORD")
         receiver_email = os.getenv("RECEIVER_EMAIL")
         smtp_server = os.getenv("SMTP_SERVER")
         smtp_port = int(os.getenv("SMTP_PORT"))
-
-        print("SMTP Email:", smtp_email)
-        print("Receiver:", receiver_email)
 
         msg = MIMEMultipart()
 
@@ -88,29 +91,21 @@ Message:
 
         msg.attach(MIMEText(body, "plain"))
 
-        print("Connecting to SMTP server...")
-
         server = smtplib.SMTP_SSL(
             smtp_server,
             smtp_port
         )
-
-        print("Logging in...")
 
         server.login(
             smtp_email,
             smtp_password
         )
 
-        print("Sending email...")
-
         server.sendmail(
             smtp_email,
             receiver_email,
             msg.as_string()
         )
-
-        print("Email sent successfully!")
 
         server.quit()
 
@@ -121,7 +116,6 @@ Message:
 
     except Exception as e:
 
-        print("\n========== ERROR ==========")
         traceback.print_exc()
 
         return {
