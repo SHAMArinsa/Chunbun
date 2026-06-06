@@ -35,7 +35,7 @@ export default function ContactFormSection() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:8000/contact",
+  "https://www.arinsaaiminds.com/api/contact",
         {
           method: "POST",
           headers: {
