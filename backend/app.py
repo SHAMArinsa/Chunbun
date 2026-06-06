@@ -10,7 +10,6 @@ import traceback
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-# Load Environment Variables
 load_dotenv()
 
 app = FastAPI(
@@ -18,16 +17,29 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS
+# -----------------------------
+# CORS CONFIGURATION
+# -----------------------------
+
+origins = [
+    "https://www.arinsaaiminds.com",
+    "https://arinsaaiminds.com",
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change to frontend domain in production
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Request Model
+# -----------------------------
+# REQUEST MODEL
+# -----------------------------
+
 class ContactForm(BaseModel):
     name: str
     email: str
@@ -37,7 +49,10 @@ class ContactForm(BaseModel):
     message: str
 
 
-# Home Route
+# -----------------------------
+# HOME
+# -----------------------------
+
 @app.get("/")
 def home():
     return {
@@ -46,7 +61,10 @@ def home():
     }
 
 
-# Health Check Route
+# -----------------------------
+# HEALTH
+# -----------------------------
+
 @app.get("/health")
 def health():
     return {
@@ -54,18 +72,14 @@ def health():
     }
 
 
-# Contact Form Route
+# -----------------------------
+# CONTACT FORM
+# -----------------------------
+
 @app.post("/contact")
 async def contact(form: ContactForm):
 
     try:
-
-        print("\n========== NEW CONTACT REQUEST ==========")
-        print("Name:", form.name)
-        print("Email:", form.email)
-        print("Phone:", form.phone)
-        print("Company:", form.company)
-        print("Subject:", form.subject)
 
         smtp_email = os.getenv("SMTP_EMAIL")
         smtp_password = os.getenv("SMTP_PASSWORD")
@@ -73,20 +87,6 @@ async def contact(form: ContactForm):
         smtp_server = os.getenv("SMTP_SERVER")
         smtp_port = int(os.getenv("SMTP_PORT", 465))
 
-        # Validate Environment Variables
-        if not smtp_email:
-            raise Exception("SMTP_EMAIL not found")
-
-        if not smtp_password:
-            raise Exception("SMTP_PASSWORD not found")
-
-        if not receiver_email:
-            raise Exception("RECEIVER_EMAIL not found")
-
-        if not smtp_server:
-            raise Exception("SMTP_SERVER not found")
-
-        # Email Content
         msg = MIMEMultipart()
 
         msg["From"] = smtp_email
@@ -96,7 +96,7 @@ async def contact(form: ContactForm):
         body = f"""
 New Lead From Website
 
----------------------------------
+--------------------------------
 
 Name: {form.name}
 
@@ -111,26 +111,20 @@ Subject: {form.subject}
 Message:
 {form.message}
 
----------------------------------
+--------------------------------
 """
 
         msg.attach(MIMEText(body, "plain"))
-
-        print("Connecting to SMTP Server...")
 
         server = smtplib.SMTP_SSL(
             smtp_server,
             smtp_port
         )
 
-        print("Logging in...")
-
         server.login(
             smtp_email,
             smtp_password
         )
-
-        print("Sending Email...")
 
         server.sendmail(
             smtp_email,
@@ -140,8 +134,6 @@ Message:
 
         server.quit()
 
-        print("Email sent successfully!")
-
         return {
             "success": True,
             "message": "Message sent successfully"
@@ -149,7 +141,6 @@ Message:
 
     except Exception as e:
 
-        print("\n========== ERROR ==========")
         traceback.print_exc()
 
         return {
