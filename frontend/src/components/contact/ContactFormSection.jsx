@@ -35,7 +35,7 @@ export default function ContactFormSection() {
       setLoading(true);
 
       const response = await fetch(
-        "https://www.arinsaaiminds.com/contact", 
+        "https://chunbun-a1j0.onrender.com/contact", 
         {
           method: "POST",
           headers: {
