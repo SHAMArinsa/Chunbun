@@ -97,7 +97,7 @@ async def send_thank_you_email(
     msg["From"] = config.SMTP_USERNAME
     msg["To"] = to_email
 
-    # Plain text fallback
+    # Plain Text Version
     text_body = f"""
 Dear {name},
 
@@ -107,16 +107,53 @@ We have successfully received your enquiry.
 
 Our team will review your request and get back to you within 24 business hours.
 
+If your request is urgent, please feel free to reply to this email.
+
 Regards,
 Arinsa AI Minds
 """
 
     msg.set_content(text_body)
 
-    # HTML version
+    # HTML Version
     html_body = f"""
 <!DOCTYPE html>
 <html>
+
+<body style="
+font-family:Arial, Helvetica, sans-serif;
+color:#333333;
+line-height:1.7;
+background-color:#ffffff;
+padding:10px;
+">
+
+<p>Dear {name},</p>
+
+<p>
+Thank you for contacting
+<strong>Arinsa AI Minds</strong>.
+</p>
+
+<p>
+We have successfully received your enquiry.
+</p>
+
+<p>
+Our team will review your request and get back to you within
+<strong>24 business hours</strong>.
+</p>
+
+<p>
+If your request is urgent, please feel free to reply to this email.
+</p>
+
+<br>
+
+<p>
+Regards,
+</p>
+
 <table cellpadding="0" cellspacing="0" border="0"
 bgcolor="#EAF2FF"
 style="
@@ -239,6 +276,8 @@ color:#4A5F85;
 </tr>
 
 </table>
+
+</body>
 </html>
 """
 
@@ -248,4 +287,3 @@ color:#4A5F85;
     )
 
     await send_email(msg)
-
