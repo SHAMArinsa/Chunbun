@@ -19,6 +19,7 @@ export default function Hero() {
       <section className="relative overflow-hidden bg-[#04142D]">
 
         {/* Background Image */}
+
         <div
           className="absolute inset-0"
           style={{
@@ -29,10 +30,12 @@ export default function Hero() {
           }}
         />
 
-        {/* Dark Overlay */}
+        {/* Overlay */}
+
         <div className="absolute inset-0 bg-[#04142D]/85" />
 
         {/* Content */}
+
         <div
           className="
           relative
@@ -55,7 +58,7 @@ export default function Hero() {
             lg:py-0
             "
           >
-            {/* LEFT SIDE */}
+            {/* LEFT CONTENT */}
 
             <div
               className="
@@ -66,14 +69,12 @@ export default function Hero() {
               lg:text-left
               "
             >
-              {/* Subtitle */}
-
               <p
                 className="
                 text-[#3B82F6]
-                tracking-[3px]
-                mb-4
-                text-[10px]
+                tracking-[4px]
+                mb-5
+                text-xs
                 sm:text-sm
                 font-semibold
                 uppercase
@@ -81,8 +82,6 @@ export default function Hero() {
               >
                 AI • AUTOMATION • DIGITAL TRANSFORMATION
               </p>
-
-              {/* Heading */}
 
               <h1
                 className="
@@ -106,8 +105,6 @@ export default function Hero() {
                 <br />
                 Innovation
               </h1>
-
-              {/* Description */}
 
               <p
                 className="
@@ -133,13 +130,16 @@ export default function Hero() {
                 className="
                 flex
                 flex-col
+                lg:flex-row
                 items-center
-                lg:items-start
-                gap-3
+                lg:items-center
+                justify-center
+                lg:justify-start
+                gap-4
                 mt-8
                 "
               >
-                {/* GET QUOTATION BUTTON */}
+                {/* QUOTATION BUTTON */}
 
                 <button
                   onClick={() =>
@@ -151,7 +151,7 @@ export default function Hero() {
                   font-semibold
 
                   w-[220px]
-                  sm:w-auto
+                  lg:w-auto
 
                   px-4
                   py-3
@@ -180,7 +180,7 @@ export default function Hero() {
                   <ArrowRight size={16} />
                 </button>
 
-                {/* EXPLORE SERVICES BUTTON */}
+                {/* SERVICES BUTTON */}
 
                 <button
                   onClick={() =>
@@ -192,7 +192,7 @@ export default function Hero() {
                   text-white
 
                   w-[220px]
-                  sm:w-auto
+                  lg:w-auto
 
                   px-4
                   py-3
@@ -216,7 +216,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* RIGHT SIDE DESKTOP ONLY */}
+            {/* RIGHT SIDE - DESKTOP ONLY */}
 
             <div
               className="
