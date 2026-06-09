@@ -1,5 +1,3 @@
-// src/components/Hero.jsx
-
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DashboardOverlay from "./DashboardOverlay";
@@ -28,14 +26,50 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#04142D]/85" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-10">
-
-        <div className="grid lg:grid-cols-2 items-center min-h-[760px]">
-
+      <div
+        className="
+        relative
+        z-10
+        max-w-[1600px]
+        mx-auto
+        px-4
+        sm:px-6
+        lg:px-10
+        "
+      >
+        <div
+          className="
+          grid
+          lg:grid-cols-2
+          items-center
+          min-h-screen
+          lg:min-h-[760px]
+          py-16
+          lg:py-0
+          "
+        >
           {/* LEFT SIDE */}
-          <div className="max-w-[650px] -mt-8">
 
-            <p className="text-[#3B82F6] tracking-[4px] mb-5 text-sm font-semibold uppercase">
+          <div
+            className="
+            max-w-[650px]
+            mx-auto
+            lg:mx-0
+            text-center
+            lg:text-left
+            "
+          >
+            <p
+              className="
+              text-[#3B82F6]
+              tracking-[3px]
+              mb-4
+              text-xs
+              sm:text-sm
+              font-semibold
+              uppercase
+              "
+            >
               AI • AUTOMATION • DIGITAL TRANSFORMATION
             </p>
 
@@ -43,8 +77,9 @@ export default function Hero() {
               className="
               text-white
               font-extrabold
-              leading-[1.08]
-              text-[44px]
+              leading-tight
+              text-4xl
+              sm:text-5xl
               lg:text-[54px]
               "
             >
@@ -62,11 +97,13 @@ export default function Hero() {
             <p
               className="
               text-gray-300
-              text-[17px]
+              text-base
               lg:text-[19px]
               leading-8
-              mt-7
+              mt-6
               max-w-[600px]
+              mx-auto
+              lg:mx-0
               "
             >
               We help organizations accelerate growth through
@@ -75,9 +112,19 @@ export default function Hero() {
               innovation.
             </p>
 
-            <div className="flex gap-5 mt-10">
+            {/* BUTTONS */}
 
-              {/* Primary Button */}
+            <div
+              className="
+              flex
+              flex-col
+              sm:flex-row
+              gap-4
+              mt-8
+              justify-center
+              lg:justify-start
+              "
+            >
               <button
                 onClick={() => navigate("/contact")}
                 className="
@@ -89,19 +136,17 @@ export default function Hero() {
                 rounded-xl
                 flex
                 items-center
+                justify-center
                 gap-2
                 transition-all
                 duration-300
-                hover:scale-105
                 hover:bg-[#2563EB]
-                hover:shadow-[0_15px_40px_rgba(59,130,246,0.45)]
                 "
               >
                 Schedule Consultation
                 <ArrowRight size={18} />
               </button>
 
-              {/* Secondary Button */}
               <button
                 onClick={() => navigate("/services")}
                 className="
@@ -112,22 +157,27 @@ export default function Hero() {
                 py-4
                 rounded-xl
                 hover:bg-[#3B82F6]/10
-                hover:border-[#60A5FA]
                 transition-all
                 duration-300
                 "
               >
                 Explore Services
               </button>
-
             </div>
-
           </div>
 
-          {/* RIGHT SIDE */}
-          <div className="relative h-full flex items-center justify-center">
+          {/* RIGHT SIDE DESKTOP ONLY */}
 
-            {/* Main Hero Image */}
+          <div
+            className="
+            hidden
+            lg:flex
+            relative
+            h-full
+            items-center
+            justify-center
+            "
+          >
             <img
               src={hero2}
               alt="ARINSA AI MINDS"
@@ -139,15 +189,10 @@ export default function Hero() {
               "
             />
 
-            {/* Floating Dashboard */}
             <DashboardOverlay />
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }

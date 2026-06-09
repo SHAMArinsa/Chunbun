@@ -113,8 +113,6 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              {/* SERVICES */}
-
               <li className="relative group">
                 <Link
                   to="/services"
@@ -149,7 +147,6 @@ export default function Navbar() {
                   "
                 >
                   <div className="p-3">
-
                     <Link
                       to="/services"
                       className="block px-4 py-3 rounded-xl hover:bg-gray-50"
@@ -191,7 +188,6 @@ export default function Navbar() {
                     >
                       Cloud & DevOps
                     </Link>
-
                   </div>
                 </div>
               </li>
@@ -199,7 +195,11 @@ export default function Navbar() {
               <li>
                 <Link
                   to="/industries"
-                  className="hover:text-[#1E40AF]"
+                  className={`hover:text-[#1E40AF] ${
+                    location.pathname === "/industries"
+                      ? "text-[#1E40AF] font-semibold"
+                      : ""
+                  }`}
                 >
                   Industries
                 </Link>
@@ -208,7 +208,11 @@ export default function Navbar() {
               <li>
                 <Link
                   to="/case-studies"
-                  className="hover:text-[#1E40AF]"
+                  className={`hover:text-[#1E40AF] ${
+                    location.pathname === "/case-studies"
+                      ? "text-[#1E40AF] font-semibold"
+                      : ""
+                  }`}
                 >
                   Case Studies
                 </Link>
@@ -217,7 +221,11 @@ export default function Navbar() {
               <li>
                 <Link
                   to="/blog"
-                  className="hover:text-[#1E40AF]"
+                  className={`hover:text-[#1E40AF] ${
+                    location.pathname === "/blog"
+                      ? "text-[#1E40AF] font-semibold"
+                      : ""
+                  }`}
                 >
                   Blog
                 </Link>
@@ -226,14 +234,18 @@ export default function Navbar() {
               <li>
                 <Link
                   to="/contact"
-                  className="hover:text-[#1E40AF]"
+                  className={`hover:text-[#1E40AF] ${
+                    location.pathname === "/contact"
+                      ? "text-[#1E40AF] font-semibold"
+                      : ""
+                  }`}
                 >
                   Contact
                 </Link>
               </li>
             </ul>
 
-            {/* CTA BUTTON */}
+            {/* DESKTOP CTA */}
 
             <button
               onClick={() =>
@@ -258,28 +270,39 @@ export default function Navbar() {
               <ArrowRight size={18} />
             </button>
 
-            {/* MOBILE MENU BUTTON */}
+            {/* MOBILE BUTTON */}
 
             <button
-              className="lg:hidden"
+              className="
+              lg:hidden
+              w-11
+              h-11
+              rounded-xl
+              border
+              border-gray-200
+              flex
+              items-center
+              justify-center
+              "
               onClick={() =>
                 setMobileMenuOpen(true)
               }
             >
-              <Menu size={28} />
+              <Menu size={24} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* OVERLAY */}
+      {/* MOBILE OVERLAY */}
 
       {mobileMenuOpen && (
         <div
           className="
           fixed
           inset-0
-          bg-black/50
+          bg-black/60
+          backdrop-blur-sm
           z-[60]
           "
           onClick={() =>
@@ -296,12 +319,15 @@ export default function Navbar() {
         top-0
         right-0
         h-full
-        w-[300px]
+        w-[85%]
+        max-w-[380px]
         bg-white
         z-[70]
-        shadow-2xl
+        shadow-[0_0_40px_rgba(0,0,0,0.2)]
         transition-transform
-        duration-300
+        duration-500
+        ease-in-out
+        overflow-y-auto
         ${
           mobileMenuOpen
             ? "translate-x-0"
@@ -309,74 +335,108 @@ export default function Navbar() {
         }
       `}
       >
-        <div className="flex justify-between p-5 border-b">
-          <h3 className="font-bold text-xl">
-            Menu
-          </h3>
+        <div className="flex items-center justify-between p-5 border-b">
+
+          <img
+            src={arinsaLogo}
+            alt="ARINSA AI MINDS"
+            className="h-12 object-contain"
+          />
 
           <button
             onClick={() =>
               setMobileMenuOpen(false)
             }
+            className="
+            w-10
+            h-10
+            rounded-full
+            bg-gray-100
+            flex
+            items-center
+            justify-center
+            "
           >
-            <X size={24} />
+            <X size={22} />
           </button>
+
         </div>
 
-        <div className="p-6 space-y-5">
+        <div className="p-6">
 
-          <Link
-            to="/"
-            onClick={() =>
-              setMobileMenuOpen(false)
-            }
-            className="block"
-          >
-            Home
-          </Link>
+          <div className="space-y-2">
 
-          <Link
-            to="/about"
-            onClick={() =>
-              setMobileMenuOpen(false)
-            }
-            className="block"
-          >
-            About Us
-          </Link>
+            {[
+              { name: "Home", path: "/" },
+              { name: "About Us", path: "/about" },
+              { name: "Industries", path: "/industries" },
+              { name: "Case Studies", path: "/case-studies" },
+              { name: "Blog", path: "/blog" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() =>
+                  setMobileMenuOpen(false)
+                }
+                className={`
+                  block
+                  px-4
+                  py-3
+                  rounded-xl
+                  transition-all
+                  ${
+                    location.pathname === item.path
+                      ? "bg-[#1E40AF] text-white"
+                      : "hover:bg-gray-100"
+                  }
+                `}
+              >
+                {item.name}
+              </Link>
+            ))}
 
-          <details>
-            <summary className="cursor-pointer">
+          </div>
+
+          <div className="mt-6 border-t pt-6">
+
+            <h4 className="text-sm font-bold text-gray-500 uppercase mb-4">
               Services
-            </summary>
+            </h4>
 
-            <div className="ml-4 mt-3 space-y-3">
+            <div className="space-y-2">
 
-              <Link to="/services">AI Strategy & Consulting</Link>
-              <Link to="/services">Generative AI Solutions</Link>
-              <Link to="/services">AI Agents & Automation</Link>
-              <Link to="/services">Data Analytics & BI</Link>
-              <Link to="/services">Web Development & Mobile Apps</Link>
-              <Link to="/services">Cloud & DevOps</Link>
+              {[
+                "AI Strategy & Consulting",
+                "Generative AI Solutions",
+                "AI Agents & Automation",
+                "Data Analytics & BI",
+                "Web Development & Mobile Apps",
+                "Cloud & DevOps",
+              ].map((service) => (
+                <Link
+                  key={service}
+                  to="/services"
+                  onClick={() =>
+                    setMobileMenuOpen(false)
+                  }
+                  className="
+                  block
+                  px-4
+                  py-2
+                  rounded-lg
+                  text-gray-600
+                  hover:bg-gray-100
+                  "
+                >
+                  {service}
+                </Link>
+              ))}
 
             </div>
-          </details>
 
-          <Link to="/industries">
-            Industries
-          </Link>
-
-          <Link to="/case-studies">
-            Case Studies
-          </Link>
-
-          <Link to="/blog">
-            Blog
-          </Link>
-
-          <Link to="/contact">
-            Contact
-          </Link>
+          </div>
 
           <button
             onClick={() => {
@@ -384,15 +444,23 @@ export default function Navbar() {
               setMobileMenuOpen(false);
             }}
             className="
+            mt-8
             w-full
             bg-[#1E40AF]
             text-white
-            py-3
+            py-4
             rounded-xl
             font-semibold
+            flex
+            items-center
+            justify-center
+            gap-2
+            hover:bg-[#1D4ED8]
+            transition-all
             "
           >
             Get A Quote
+            <ArrowRight size={18} />
           </button>
 
         </div>

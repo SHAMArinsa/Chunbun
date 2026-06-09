@@ -77,7 +77,7 @@ export default function Industries() {
 
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
           {industries.map((industry, index) => {
             const Icon = industry.icon;

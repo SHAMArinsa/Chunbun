@@ -55,7 +55,7 @@ export default function Stats() {
           "
         >
 
-          <div className="grid lg:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
             {stats.map((item, index) => {
               const Icon = item.icon;
@@ -98,7 +98,7 @@ export default function Stats() {
                       <h2
                         className="
                         text-[#566baf]
-                        text-6xl
+                        text-4xl sm:text-5xl lg:text-6xl
                         font-bold
                         "
                       >
