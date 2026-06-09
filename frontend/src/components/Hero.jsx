@@ -59,12 +59,14 @@ export default function Hero() {
             lg:text-left
             "
           >
+            {/* Subtitle */}
+
             <p
               className="
               text-[#3B82F6]
               tracking-[3px]
               mb-4
-              text-xs
+              text-[10px]
               sm:text-sm
               font-semibold
               uppercase
@@ -73,12 +75,15 @@ export default function Hero() {
               AI • AUTOMATION • DIGITAL TRANSFORMATION
             </p>
 
+            {/* Heading */}
+
             <h1
               className="
               text-white
               font-extrabold
               leading-tight
-              text-4xl
+
+              text-[42px]
               sm:text-5xl
               lg:text-[54px]
               "
@@ -87,17 +92,21 @@ export default function Hero() {
               <br />
               Businesses Through
               <br />
+
               <span className="text-[#3B82F6]">
                 AI-Powered
               </span>
+
               <br />
               Innovation
             </h1>
 
+            {/* Description */}
+
             <p
               className="
               text-gray-300
-              text-base
+              text-[16px]
               lg:text-[19px]
               leading-8
               mt-6
@@ -118,34 +127,52 @@ export default function Hero() {
               className="
               flex
               flex-col
-              sm:flex-row
-              gap-4
+              items-center
+              lg:items-start
+              gap-3
               mt-8
-              justify-center
-              lg:justify-start
               "
             >
+              {/* Primary Button */}
+
               <button
                 onClick={() => navigate("/contact")}
                 className="
                 bg-[#3B82F6]
                 text-white
                 font-semibold
-                px-8
-                py-4
+
+                w-[220px]
+                sm:w-auto
+
+                px-4
+                py-3
+
+                sm:px-8
+                sm:py-4
+
                 rounded-xl
+
                 flex
                 items-center
                 justify-center
                 gap-2
+
+                text-sm
+                sm:text-base
+
                 transition-all
                 duration-300
+
                 hover:bg-[#2563EB]
+                hover:scale-[1.02]
                 "
               >
                 Schedule Consultation
-                <ArrowRight size={18} />
+                <ArrowRight size={16} />
               </button>
+
+              {/* Secondary Button */}
 
               <button
                 onClick={() => navigate("/services")}
@@ -153,10 +180,23 @@ export default function Hero() {
                 border
                 border-[#3B82F6]
                 text-white
-                px-8
-                py-4
+
+                w-[220px]
+                sm:w-auto
+
+                px-4
+                py-3
+
+                sm:px-8
+                sm:py-4
+
                 rounded-xl
+
+                text-sm
+                sm:text-base
+
                 hover:bg-[#3B82F6]/10
+
                 transition-all
                 duration-300
                 "
@@ -166,7 +206,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT SIDE DESKTOP ONLY */}
+          {/* RIGHT SIDE (Desktop Only) */}
 
           <div
             className="
