@@ -14,6 +14,8 @@ export default function QuoteModal({ isOpen, onClose }) {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -24,9 +26,11 @@ export default function QuoteModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+
     try {
       const response = await fetch(
-        "https://chunbun-hsax.onrender.com/contact",
+        "https:chunbun-ifwh.onrender.com/quote", //"http://localhost:8000/quote",
         {
           method: "POST",
           headers: {
@@ -34,30 +38,29 @@ export default function QuoteModal({ isOpen, onClose }) {
           },
           body: JSON.stringify({
             name:
-              formData.firstName +
+              formData.firstName.trim() +
               " " +
-              formData.lastName,
-            email: formData.email,
-            phone: formData.phone,
-            company: formData.company,
-            message: `
-Service: ${formData.service}
+              formData.lastName.trim(),
 
-Budget: ${formData.budget}
+            email: formData.email.trim(),
+            phone: formData.phone.trim(),
+            company: formData.company.trim(),
 
-Timeline: ${formData.timeline}
+            service: formData.service,
+            budget: formData.budget,
+            timeline: formData.timeline,
 
-Message:
-${formData.message}
-            `,
+            message: formData.message.trim(),
           }),
         }
       );
 
       const data = await response.json();
 
-      if (data.success) {
-        alert("Quote Request Sent Successfully");
+      if (response.ok && data.success) {
+        alert(
+          "Thank you for sending your request for quotation. Our team will review your requirements and communicate with you through email within 3 - 4 business days."
+        );
 
         setFormData({
           firstName: "",
@@ -73,11 +76,20 @@ ${formData.message}
 
         onClose();
       } else {
-        alert("Failed to send request");
+        alert(
+          data.detail ||
+            data.message ||
+            "Failed to send quotation request."
+        );
       }
     } catch (error) {
       console.error(error);
-      alert("Something went wrong");
+
+      alert(
+        "Something went wrong while submitting your quotation request. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -126,8 +138,8 @@ ${formData.message}
         </h2>
 
         <p className="text-gray-600 mt-3 mb-8">
-          Tell us about your project and
-          we'll get back to you shortly.
+          Tell us about your project and receive a customized quotation,
+          estimated project cost, timeline, and solution proposal.
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -230,6 +242,7 @@ ${formData.message}
               name="budget"
               value={formData.budget}
               onChange={handleChange}
+              required
               className="border rounded-xl p-4"
             >
               <option value="">
@@ -257,6 +270,7 @@ ${formData.message}
               name="timeline"
               value={formData.timeline}
               onChange={handleChange}
+              required
               className="border rounded-xl p-4"
             >
               <option value="">
@@ -288,6 +302,7 @@ ${formData.message}
             placeholder="Tell us about your project..."
             value={formData.message}
             onChange={handleChange}
+            required
             className="
             border
             rounded-xl
@@ -299,9 +314,11 @@ ${formData.message}
 
           <button
             type="submit"
+            disabled={loading}
             className="
             mt-6
             bg-[#1E40AF]
+            hover:bg-[#1D4ED8]
             text-white
             px-8
             py-4
@@ -310,10 +327,15 @@ ${formData.message}
             items-center
             gap-2
             font-semibold
+            disabled:opacity-50
+            disabled:cursor-not-allowed
             "
           >
-            Submit Request
             <Send size={18} />
+
+            {loading
+              ? "Submitting..."
+              : "Submit Request"}
           </button>
         </form>
       </div>
