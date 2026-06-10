@@ -282,77 +282,277 @@ Arinsa AI Minds
 <html>
 
 <body style="
+margin:0;
+padding:20px;
+background:#F4F7FB;
 font-family:Arial, Helvetica, sans-serif;
 color:#333333;
-line-height:1.7;
-background-color:#ffffff;
-padding:10px;
 ">
 
-<p>Dear {name},</p>
+<table
+width="800"
+cellpadding="0"
+cellspacing="0"
+style="
+margin:auto;
+background:#FFFFFF;
+border:1px solid #DCE5F2;
+border-radius:12px;
+overflow:hidden;
+"
+>
 
-<p>
-Thank you for contacting
-<strong>Arinsa AI Minds</strong>.
+<!-- HEADER -->
+
+<tr>
+
+<td
+style="
+background:#0A2A66;
+padding:25px 35px;
+color:#FFFFFF;
+"
+>
+
+<table width="100%" cellpadding="0" cellspacing="0">
+
+<tr>
+
+<td width="120" align="left">
+
+<img
+src="https://www.arinsaaiminds.com/assets/arinsa-logo-CRQZjP3S.png"
+alt="ARINSA AI MINDS"
+width="90"
+style="display:block;"
+>
+
+</td>
+
+<td align="center">
+
+<h1 style="
+margin:0;
+font-size:42px;
+font-weight:700;
+color:#FFFFFF;
+">
+Enquiry Received
+</h1>
+
+<p style="
+margin-top:12px;
+font-size:20px;
+color:#E8EEFF;
+">
+Thank you for contacting ARINSA AI MINDS
 </p>
 
-<p>
-We have successfully received your enquiry.
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<!-- CONTENT -->
+
+<tr>
+
+<td style="padding:45px;">
+
+<p style="
+font-size:16px;
+line-height:1.8;
+margin-top:0;
+">
+Dear <strong>{name}</strong>,
 </p>
 
-<p>
-Our team will review your request and get back to you within
-<strong>24 business hours</strong>.
+<p style="line-height:1.8;">
+Thank you for contacting ARINSA AI MINDS.
+We have successfully received your enquiry and our team has started reviewing your request.
 </p>
 
-<p>
-If your request is urgent, please feel free to reply to this email.
+<h2 style="
+color:#0A2A66;
+font-size:22px;
+margin-top:35px;
+margin-bottom:25px;
+">
+Enquiry Information
+</h2>
+
+<table width="100%" cellpadding="12">
+
+<tr>
+<td width="260"><strong>Customer Name</strong></td>
+<td>{name}</td>
+</tr>
+
+<tr>
+<td><strong>Status</strong></td>
+<td>Successfully Received</td>
+</tr>
+
+<tr>
+<td><strong>Response Timeline</strong></td>
+<td>Within 24 Business Hours</td>
+</tr>
+
+<tr>
+<td><strong>Request Type</strong></td>
+<td>Website Contact Form</td>
+</tr>
+
+</table>
+
+<hr style="
+margin:35px 0;
+border:none;
+border-top:1px solid #E5EAF2;
+">
+
+<h2 style="
+color:#0A2A66;
+font-size:22px;
+margin-bottom:20px;
+">
+Enquiry Review Process
+</h2>
+
+<table width="100%" cellpadding="10">
+
+<tr>
+<td width="35">✓</td>
+<td>Enquiry Review</td>
+</tr>
+
+<tr>
+<td>✓</td>
+<td>Requirement Assessment</td>
+</tr>
+
+<tr>
+<td>✓</td>
+<td>Internal Evaluation</td>
+</tr>
+
+<tr>
+<td>✓</td>
+<td>Specialist Assignment</td>
+</tr>
+
+<tr>
+<td>✓</td>
+<td>Response Preparation</td>
+</tr>
+
+<tr>
+<td>✓</td>
+<td>Direct Communication</td>
+</tr>
+
+</table>
+
+<div style="
+margin-top:35px;
+padding:25px;
+background:#EEF4FF;
+border-left:5px solid #2563EB;
+border-radius:8px;
+">
+
+<h3 style="
+margin-top:0;
+margin-bottom:10px;
+color:#0A2A66;
+">
+What Happens Next?
+</h3>
+
+<p style="
+margin:0;
+line-height:1.8;
+">
+Our team will carefully review your enquiry and provide the appropriate response, recommendations, or next steps within 24 business hours.
 </p>
+
+</div>
 
 <br>
+
+<p style="line-height:1.8;">
+If additional information is required, one of our specialists may contact you for clarification.
+</p>
+
+<p style="line-height:1.8;">
+If your request is urgent, please feel free to reply directly to this email.
+</p>
+
+<p style="line-height:1.8;">
+We appreciate your interest in ARINSA AI MINDS and look forward to assisting you.
+</p>
 
 <p>
 Regards,
 </p>
 
-<table cellpadding="0" cellspacing="0" border="0"
-bgcolor="#EAF2FF"
-style="
-font-family:Arial, Helvetica, sans-serif;
-background:#EAF2FF;
-border:1px solid #AFC4E8;
-border-radius:10px;
-padding:20px;
-max-width:700px;
-width:100%;
-">
+</td>
+
+</tr>
+
+<!-- BUSINESS CARD FOOTER -->
 
 <tr>
 
-<td style="
-width:180px;
-padding-right:20px;
-border-right:3px solid #2350F4;
+<td style="padding:0;">
+
+<table
+width="100%"
+cellpadding="0"
+cellspacing="0"
+style="
+background:#EAF2FF;
+border-top:1px solid #C8D8F5;
+"
+>
+
+<tr>
+
+<td
+width="220"
+style="
+padding:30px;
 text-align:center;
-vertical-align:middle;
-">
+border-right:1px solid #C8D8F5;
+"
+>
 
 <img
 src="https://www.arinsaaiminds.com/assets/arinsa-logo-CRQZjP3S.png"
 alt="ARINSA AI MINDS"
-width="150"
-style="display:block;margin:auto;"
+width="120"
+style="
+display:block;
+margin:auto;
+"
 >
 
 </td>
 
-<td style="
-padding-left:20px;
+<td
+style="
+padding:25px;
 vertical-align:top;
-">
+"
+>
 
 <div style="
-font-size:26px;
+font-size:34px;
 font-weight:700;
 color:#00145F;
 line-height:1.2;
@@ -361,26 +561,21 @@ ARINSA AI MINDS
 </div>
 
 <div style="
-font-size:15px;
+font-size:16px;
 font-weight:600;
 color:#2350F4;
-margin-top:10px;
-line-height:1.5;
+margin-top:12px;
 ">
 AI • Generative AI • Automation • Digital Solutions
 </div>
 
 <div style="
-margin-top:18px;
+margin-top:20px;
 font-size:15px;
 line-height:2;
 color:#111111;
 ">
 
-<span style="
-color:#2350F4;
-font-weight:600;
-">
 🌐
 <a
 href="https://www.arinsaaiminds.com"
@@ -388,10 +583,10 @@ style="
 color:#2350F4;
 text-decoration:none;
 font-weight:700;
-">
+"
+>
 www.arinsaaiminds.com
 </a>
-</span>
 
 <br>
 
@@ -400,15 +595,15 @@ www.arinsaaiminds.com
 </div>
 
 <div style="
-margin-top:15px;
-border-top:1px solid #AFC4E8;
-padding-top:15px;
+margin-top:18px;
+border-top:1px solid #C8D8F5;
+padding-top:18px;
 ">
 
 <div style="
-font-size:15px;
-color:#00145F;
+font-size:16px;
 font-weight:700;
+color:#00145F;
 ">
 We Simplify Your Business & Amplify Your Success
 </div>
@@ -416,8 +611,8 @@ We Simplify Your Business & Amplify Your Success
 <div style="
 margin-top:8px;
 font-size:13px;
-color:#4A5F85;
 font-style:italic;
+color:#4A5F85;
 ">
 Innovation begins when intelligence meets imagination.
 </div>
@@ -431,6 +626,12 @@ color:#4A5F85;
 ">
 © ARINSA AI MINDS Pvt. Ltd. | All Rights Reserved
 </div>
+
+</td>
+
+</tr>
+
+</table>
 
 </td>
 
@@ -729,9 +930,10 @@ ARINSA AI MINDS
 <html>
 
 <body style="
-font-family:Arial, Helvetica, sans-serif;
-background:#F4F7FB;
+margin:0;
 padding:20px;
+background:#F4F7FB;
+font-family:Arial, Helvetica, sans-serif;
 color:#333333;
 ">
 
@@ -748,28 +950,52 @@ overflow:hidden;
 "
 >
 
+<!-- HEADER -->
+
 <tr>
 
 <td
 style="
 background:#0A2A66;
-padding:40px;
-text-align:center;
+padding:25px 35px;
 color:#FFFFFF;
 "
 >
+
+<table
+width="100%"
+cellpadding="0"
+cellspacing="0"
+>
+
+<tr>
+
+<td width="120" align="left">
+
+<img
+src="https://www.arinsaaiminds.com/assets/arinsa-logo-CRQZjP3S.png"
+alt="ARINSA AI MINDS"
+width="90"
+style="display:block;"
+>
+
+</td>
+
+<td align="center">
 
 <h1 style="
 margin:0;
 font-size:42px;
 font-weight:700;
+color:#FFFFFF;
 ">
 Quotation Request Received
 </h1>
 
 <p style="
-margin-top:18px;
+margin-top:12px;
 font-size:20px;
+color:#E8EEFF;
 ">
 Thank you for choosing ARINSA AI MINDS
 </p>
@@ -778,13 +1004,37 @@ Thank you for choosing ARINSA AI MINDS
 
 </tr>
 
+</table>
+
+</td>
+
+</tr>
+
+<!-- CONTENT -->
+
 <tr>
 
 <td style="padding:45px;">
 
+<p style="
+font-size:16px;
+line-height:1.8;
+margin-top:0;
+">
+Dear <strong>{name}</strong>,
+</p>
+
+<p style="
+line-height:1.8;
+">
+Thank you for submitting your quotation request.
+We have successfully received your request and our team has started reviewing your requirements.
+</p>
+
 <h2 style="
 color:#0A2A66;
 font-size:22px;
+margin-top:35px;
 margin-bottom:25px;
 ">
 Request Information
@@ -815,7 +1065,7 @@ Request Information
 </table>
 
 <hr style="
-margin:30px 0;
+margin:35px 0;
 border:none;
 border-top:1px solid #E5EAF2;
 ">
@@ -831,7 +1081,7 @@ Quotation Preparation Process
 <table width="100%" cellpadding="10">
 
 <tr>
-<td width="40">✓</td>
+<td width="35">✓</td>
 <td>Requirements Review</td>
 </tr>
 
@@ -863,26 +1113,26 @@ Quotation Preparation Process
 </table>
 
 <div style="
-margin-top:30px;
+margin-top:35px;
 padding:25px;
 background:#EEF4FF;
 border-left:5px solid #2563EB;
 border-radius:8px;
 ">
 
-<strong style="
+<h3 style="
+margin-top:0;
+margin-bottom:10px;
 color:#0A2A66;
-font-size:16px;
 ">
 What Happens Next?
-</strong>
+</h3>
 
 <p style="
-margin-top:12px;
-margin-bottom:0;
+margin:0;
 line-height:1.8;
 ">
-Our team will carefully review your requirements and prepare a customized solution proposal, estimated pricing, and implementation roadmap.
+Our team will carefully review your requirements and prepare a customized solution proposal, estimated pricing, and implementation roadmap tailored to your business needs.
 </p>
 
 </div>
@@ -897,49 +1147,142 @@ If additional information is required, one of our specialists may contact you fo
 We appreciate your interest in ARINSA AI MINDS and look forward to assisting you.
 </p>
 
+<p>
+Regards,<br>
+
+</p>
+
 </td>
 
 </tr>
 
+<!-- BUSINESS CARD FOOTER -->
+
+<tr>
+
+<td style="padding:0;">
+
+<table
+width="100%"
+cellpadding="0"
+cellspacing="0"
+style="
+background:#EAF2FF;
+border-top:1px solid #C8D8F5;
+"
+>
+
 <tr>
 
 <td
+width="220"
 style="
-background:#0A2A66;
-padding:25px;
+padding:30px;
 text-align:center;
-color:#FFFFFF;
+border-right:1px solid #C8D8F5;
+"
+>
+
+<img
+src="https://www.arinsaaiminds.com/assets/arinsa-logo-CRQZjP3S.png"
+alt="ARINSA AI MINDS"
+width="120"
+style="
+display:block;
+margin:auto;
+"
+>
+
+</td>
+
+<td
+style="
+padding:25px;
+vertical-align:top;
 "
 >
 
 <div style="
-font-size:24px;
+font-size:34px;
 font-weight:700;
+color:#00145F;
+line-height:1.2;
 ">
 ARINSA AI MINDS
 </div>
 
 <div style="
-margin-top:10px;
-font-size:14px;
+font-size:16px;
+font-weight:600;
+color:#2350F4;
+margin-top:12px;
 ">
 AI • Generative AI • Automation • Digital Solutions
 </div>
 
 <div style="
-margin-top:15px;
-font-size:14px;
+margin-top:20px;
+font-size:15px;
+line-height:2;
+color:#111111;
 ">
-🌐 https://www.arinsaaiminds.com
+
+🌐
+<a
+href="https://www.arinsaaiminds.com"
+style="
+color:#2350F4;
+text-decoration:none;
+font-weight:700;
+"
+>
+www.arinsaaiminds.com
+</a>
+
+<br>
+
+📍 Kolkata, West Bengal, India
+
+</div>
+
+<div style="
+margin-top:18px;
+border-top:1px solid #C8D8F5;
+padding-top:18px;
+">
+
+<div style="
+font-size:16px;
+font-weight:700;
+color:#00145F;
+">
+We Simplify Your Business & Amplify Your Success
 </div>
 
 <div style="
 margin-top:8px;
 font-size:13px;
-opacity:.85;
+font-style:italic;
+color:#4A5F85;
 ">
-Kolkata, West Bengal, India
+Innovation begins when intelligence meets imagination.
 </div>
+
+</div>
+
+<div style="
+margin-top:18px;
+font-size:12px;
+color:#4A5F85;
+">
+© ARINSA AI MINDS Pvt. Ltd. | All Rights Reserved
+</div>
+
+</td>
+
+</tr>
+
+</table>
 
 </td>
 
