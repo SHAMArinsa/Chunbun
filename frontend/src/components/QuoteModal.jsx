@@ -30,7 +30,7 @@ export default function QuoteModal({ isOpen, onClose }) {
 
     try {
       const response = await fetch(
-        "https:chunbun-ifwh.onrender.com/quote", //"http://localhost:8000/quote",
+         "https:chunbun-ifwh.onrender.com/quote", //"http://localhost:8000/quote", 
         {
           method: "POST",
           headers: {
@@ -297,21 +297,45 @@ export default function QuoteModal({ isOpen, onClose }) {
           </div>
 
           <textarea
-            rows="6"
-            name="message"
-            placeholder="Tell us about your project..."
-            value={formData.message}
-            onChange={handleChange}
-            required
-            className="
-            border
-            rounded-xl
-            p-4
-            w-full
-            mt-6
-            "
-          />
+  rows="6"
+  name="message"
+  placeholder="Tell us about your project..."
+  value={formData.message}
+  onChange={handleChange}
+  required
+  maxLength={50000}
+  className="
+  border
+  rounded-xl
+  p-4
+  w-full
+  mt-6
+  "
+/>
 
+<div
+  className={`
+    mt-2
+    flex
+    justify-between
+    text-sm
+    ${
+      formData.message.length > 45000
+        ? "text-red-600"
+        : "text-gray-500"
+    }
+  `}
+>
+  <span>
+    Maximum 50,000 characters allowed
+  </span>
+
+  <span>
+    {(
+      50000 - formData.message.length
+    ).toLocaleString()} characters remaining
+  </span>
+</div>
           <button
             type="submit"
             disabled={loading}
