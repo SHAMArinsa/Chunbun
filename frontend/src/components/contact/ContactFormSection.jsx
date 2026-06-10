@@ -38,7 +38,7 @@ export default function ContactFormSection() {
       setLoading(true);
 
       const response = await fetch(
-        "https://chunbun-ifwh.onrender.com/contact", //"http://localhost:8000/contact",
+        "https://chunbun-ifwh.onrender.com/contact", //"http://localhost:8000/contact", 
         {
           method: "POST",
           headers: {
@@ -155,14 +155,39 @@ export default function ContactFormSection() {
                 />
 
                 <textarea
-                  rows="6"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="How can we help you? *"
-                  className="w-full border rounded-xl p-4"
-                  required
-                />
+  rows="6"
+  name="message"
+  value={formData.message}
+  onChange={handleChange}
+  placeholder="How can we help you? *"
+  className="w-full border rounded-xl p-4"
+  required
+  maxLength={10000}
+/>
+
+<div
+  className={`
+    mt-2
+    flex
+    justify-between
+    text-sm
+    ${
+      formData.message.length > 9000
+        ? "text-red-600"
+        : "text-gray-500"
+    }
+  `}
+>
+  <span>
+    Maximum 10,000 characters allowed
+  </span>
+
+  <span>
+    {(
+      10000 - formData.message.length
+    ).toLocaleString()} characters remaining
+  </span>
+</div>
 
                 <button
                   type="submit"
