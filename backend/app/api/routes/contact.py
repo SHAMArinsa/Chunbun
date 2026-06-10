@@ -42,7 +42,7 @@ def validate_contact_data(data: dict):
             detail="Invalid email address"
         )
 
-    if len(data["message"]) > 5000:
+    if len(data["message"]) > 10000:
 
         raise HTTPException(
             status_code=400,
@@ -78,7 +78,7 @@ def validate_quote_data(data: dict):
             detail="Invalid email address"
         )
 
-    if len(data["message"]) > 5000:
+    if len(data["message"]) > 50000:
 
         raise HTTPException(
             status_code=400,
