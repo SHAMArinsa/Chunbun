@@ -30,7 +30,7 @@ export default function QuoteModal({ isOpen, onClose }) {
 
     try {
       const response = await fetch(
-         "https:chunbun-ifwh.onrender.com/quote", //"http://localhost:8000/quote", 
+         "https://chunbun-ifwh.onrender.com/quote", //"http://localhost:8000/quote", 
         {
           method: "POST",
           headers: {
