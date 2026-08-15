@@ -38,7 +38,7 @@ export default function ContactFormSection() {
       setLoading(true);
 
       const response = await fetch(
-        "https://chunbun-ifwh.onrender.com/contact", //"http://localhost:8000/contact",
+        "https://chunbun-cx9u.onrender.com/contact", //"http://localhost:8000/contact",
         {
           method: "POST",
           headers: {
