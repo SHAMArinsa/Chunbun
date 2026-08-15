@@ -23,7 +23,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 function ExternalInternshipRegistration() {
   useEffect(() => {
-    window.location.replace("https://www.intern.arinsaaiminds.com");
+    window.location.replace("https://intern.arinsaaiminds.com/");
   }, []);
 
   return null;
