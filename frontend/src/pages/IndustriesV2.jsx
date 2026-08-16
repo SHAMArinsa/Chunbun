@@ -1,8 +1,0 @@
-import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import SEO from "../components/SEO";
-import reference from "../assets/industries-reference.png";
-import IndustriesSection from "../components/industries/IndustriesSection";
-const spot=(left,top,width,height)=>({position:"absolute",left,top,width,height,zIndex:2,borderRadius:12});
-export default function IndustriesV2(){return <><SEO title="Industry Technology Solutions | ARINSA AI MINDS" description="Technology solutions built around your industry." canonical="/industries"/><Navbar/><main><section aria-label="Industry expertise" style={{position:"relative",overflow:"hidden",background:"#03142e",aspectRatio:"1600 / 892"}}><img src={reference} alt="Technology solutions built around your industry" style={{position:"absolute",top:0,left:0,width:"100%",transform:"translateY(-10.8%)",pointerEvents:"none"}}/><a href="#industries-directory" aria-label="Explore industries" style={spot("5.3%","73.8%","16.8%","7.2%")}/><Link to="/contact" aria-label="Discuss your industry challenge" style={spot("23.1%","73.8%","22.1%","7.2%")}/><Link to="/services/data-automation" aria-label="Workflows" style={spot("51.3%","8.7%","21.3%","39.2%")}/><Link to="/services/data-automation" aria-label="Data" style={spot("73.7%","8.7%","21.3%","39.2%")}/><Link to="/services/software-product-engineering" aria-label="Systems" style={spot("51.3%","50.2%","21.3%","39.2%")}/><Link to="/services/digital-experience" aria-label="People" style={spot("73.7%","50.2%","21.3%","39.2%")}/></section><div id="industries-directory"><IndustriesSection/></div></main><Footer/></>;}
